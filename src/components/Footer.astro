@@ -20,46 +20,22 @@ const currentYear = new Date().getFullYear();
   <div
     class="border-border flex flex-col items-center justify-between border-t py-6 sm:flex-row-reverse sm:py-4"
   >
-    <Socials />
+    <div class="flex items-center gap-1">
+      <Socials />
+      <img
+        src="/images/eastereggs/sick.png"
+        alt="Caballero de Guardian Tales noqueado después de chocarse con los iconos"
+        class="pixel-sprite h-9 w-auto rotate-12 hover:animate-bounce"
+        width="37"
+        height="39"
+        loading="lazy"
+        title="🤕"
+      />
+    </div>
     <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
       <span>{t.footer.copyright} &#169; {currentYear}</span>
       <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
       <span>{t.footer.allRightsReserved}</span>
     </div>
   </div>
-  <div class="flex items-end justify-center gap-2 pb-4 select-none" title="🤫 psst… un easter egg">
-    <img
-      src="/images/eastereggs/hi.png"
-      alt="Caballero de Guardian Tales saludando"
-      class="pixel-sprite hover:animate-bounce"
-      loading="lazy"
-      width="40"
-      height="40"
-    />
-    <img
-      src="/images/eastereggs/attack.png"
-      alt="Caballero de Guardian Tales levantando la espada"
-      class="pixel-sprite hover:animate-bounce"
-      loading="lazy"
-      width="40"
-      height="40"
-    />
-    <img
-      src="/images/eastereggs/sick.png"
-      alt="Caballero de Guardian Tales noqueado después de la caída"
-      class="pixel-sprite hover:animate-bounce"
-      loading="lazy"
-      width="40"
-      height="40"
-    />
-  </div>
 </footer>
-
-<style>
-  .pixel-sprite {
-    height: 2.5rem;
-    width: auto;
-    image-rendering: pixelated;
-    cursor: default;
-  }
-</style>

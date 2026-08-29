@@ -116,11 +116,20 @@ const homePath = getRelativeLocaleUrl(locale, "");
       )
     }
 
-    <div class="my-8 text-center">
+    <div class="my-8 flex items-center justify-center gap-3">
       <LinkButton href={getRelativeLocaleUrl(locale, "posts")}>
         {t.home.allPosts}
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
+      <img
+        src="/images/eastereggs/attack.png"
+        alt="Caballero de Guardian Tales corriendo con la espada levantada"
+        class="pixel-sprite h-9 w-auto hover:animate-bounce"
+        width="49"
+        height="41"
+        loading="lazy"
+        title="🤫"
+      />
     </div>
   </main>
   <Footer />

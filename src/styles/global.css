@@ -35,6 +35,10 @@
   @apply underline decoration-wavy decoration-2 underline-offset-8;
 }
 
+@utility pixel-sprite {
+  image-rendering: pixelated;
+}
+
 :target {
   scroll-margin-block: 1rem;
 }
