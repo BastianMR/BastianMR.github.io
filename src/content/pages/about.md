@@ -3,7 +3,7 @@ title: "Sobre mí"
 description: "Bastian Marquez Riffo: Contador Auditor, FP&A y AI-Driven Finance. Experiencia en Deloitte, Serbanc, Etiner Labs y Orion. IA, finanzas y código."
 ---
 
-## Bastian Marquez Riffo — Tweakers_BAMR 👋
+## Bastian Marquez Riffo — Tweakers_BAMR <span class="inline-block hover:animate-bounce">👋</span>
 
 **Contador Auditor | FP&A Specialist | AI-Driven Finance Transformation.** Nerd entusiasta de la
 inteligencia artificial, las finanzas y los proyectos de código. Escribo sobre lo que
@@ -17,53 +17,40 @@ Mi zona de juego: planificación financiera (FP&A), auditoría externa (Big 4) y
 modernización de operaciones financieras con IA generativa y automatización de flujos
 de trabajo (n8n, low-code).
 
-## Experiencia
+## Stack
 
-- **Accounting Analyst — Orion** (2025)
-  Análisis de cuentas y soporte a control de gestión, identificando errores e
-  irregularidades y proponiendo mejoras en políticas contables.
+**ERP y Finanzas**
 
-- **Analista de Contabilidad — Serbanc** (2023–2025)
-  Cierre contable mensual en SAP Business One: provisiones, declaración F29,
-  reclasificaciones y ajustes, más soporte a control de gestión.
+<div class="flex flex-wrap items-center gap-4">
+  <img src="/icons/tech/sap.svg" alt="SAP Business One" title="SAP Business One" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+  <img src="/icons/tech/excel.svg" alt="Microsoft Excel" title="Microsoft Excel" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+  <img src="/icons/tech/googlesheets.svg" alt="Google Sheets" title="Google Sheets" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+</div>
 
-- **Accounting and Financial Analyst — Etiner Labs** (2022–2023)
-  Estandarización de información contable y financiera para la toma de decisiones,
-  extendiendo el horizonte de visualización de 3 a 12 meses reflejado en runway.
+**IA**
 
-- **Consultor en Finanzas y Administración — Independiente** (2020–actualidad)
-  Estrategia y planificación contable-financiera para Pymes, implementación de
-  sistemas de gestión y optimización de recursos.
+<div class="flex flex-wrap items-center gap-4">
+  <img src="/icons/tech/chatgpt.svg" alt="ChatGPT" title="ChatGPT" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+  <img src="/icons/tech/googlegemini.svg" alt="Gemini" title="Gemini" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+  <img src="/icons/tech/notebooklm.svg" alt="NotebookLM" title="NotebookLM" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+</div>
 
-- **Auditor Financiero (Staff in Audit Private) — Deloitte** (2020–2022)
-  Más de 38 auditorías de diversos rubros: efectivo, cuentas por cobrar y pagar,
-  PPE, inventarios en terreno y procedimientos indagatorios.
+**Automatización y Gestión**
 
-- **Ayudante de Cátedra e Investigación — Universidad Alberto Hurtado** (2018–2021)
-  Ayudantías de análisis y diseño de procesos de negocio, fundamentos de auditoría,
-  sistemas gestores de base de datos y Excel aplicado a contabilidad.
+<div class="flex flex-wrap items-center gap-4">
+  <img src="/icons/tech/n8n.svg" alt="n8n" title="n8n" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+  <img src="/icons/tech/notion.svg" alt="Notion" title="Notion" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+  <img src="/icons/tech/planner.svg" alt="Microsoft Planner" title="Microsoft Planner" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+  <img src="/icons/tech/google.svg" alt="GSuite / Google Workspace" title="GSuite / Google Workspace" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+</div>
 
-## Formación
+**Dev (este blog)**
 
-- **Licenciado en Contabilidad y Auditoría** — Universidad Alberto Hurtado (2017–2021)
-
-**Educación continua:**
-
-- Diplomado en educación emocional y liderazgo transformacional — Fundación Liderazgo Chile (2021)
-- Finanzas para Startups — Platzi (2022)
-- Programa especializado: Software Product Management — Coursera (2020)
-- Programa especializado: Digital Product Management — Coursera (2020)
-- Gestión de proyectos con metodologías ágiles — Fundación Telefónica (2020)
-- Tecnología para gerentes y directores — Platzi (2020)
-- Excel aplicado a los negocios (nivel avanzado) — Coursera (2020)
-- Estadística aplicada a los negocios — Coursera (2020)
-- Trabajo remoto o teletrabajo — Platzi (2020)
-
-## Herramientas
-
-- **ERP y finanzas:** SAP Business One · Microsoft Excel · Google Sheets
-- **IA:** ChatGPT · Gemini · NotebookLM
-- **Gestión:** Notion · Microsoft Planner · Office / GSuite
+<div class="flex flex-wrap items-center gap-4">
+  <img src="/icons/tech/astro.svg" alt="Astro" title="Astro" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+  <img src="/icons/tech/git.svg" alt="Git" title="Git" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+  <img src="/icons/tech/github.svg" alt="GitHub" title="GitHub" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+</div>
 
 ## Logros y proyectos 🧩
 
