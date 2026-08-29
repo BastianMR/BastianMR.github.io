@@ -22,40 +22,40 @@ de trabajo (n8n, low-code).
 **ERP y Finanzas**
 
 <div class="flex flex-wrap gap-2">
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">SAP Business One</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Excel</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Google Sheets</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">SAP Business One</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Excel</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Google Sheets</span>
 </div>
 
 **IA**
 
 <div class="flex flex-wrap gap-2">
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">ChatGPT</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Gemini</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">NotebookLM</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Claude</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">MiniMax</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">ChatGPT</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Gemini</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">NotebookLM</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Claude</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">MiniMax</span>
 </div>
 
 **Automatización y Gestión**
 
 <div class="flex flex-wrap gap-2">
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">n8n</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Notion</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Obsidian</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Linear</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Planner</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">GSuite</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">n8n</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Notion</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Obsidian</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Linear</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Planner</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">GSuite</span>
 </div>
 
 **Dev y Agentes**
 
 <div class="flex flex-wrap gap-2">
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Astro</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Git</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">GitHub</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">OpenCode</span>
-  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Hermes Agent</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Astro</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Git</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">GitHub</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">OpenCode</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Hermes Agent</span>
 </div>
 
 ## Logros y proyectos 🧩
