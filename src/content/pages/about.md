@@ -1,37 +1,36 @@
 ---
-title: "About"
-description: "A bit about me and this blog."
+title: "Sobre mí"
+description: "Quién está detrás de IA, Finanzas y Código."
 ---
 
-AstroPaper is a minimal, accessible and SEO-friendly blog theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+## Tweakers_BAMR 👋
 
-![Astro Paper](@/assets/images/astropaper-og.jpg)
+**AI-Driven Finance & Operations Specialist**. Nerd entusiasta de la inteligencia
+artificial, las finanzas y los proyectos de código. Escribo sobre lo que
+construyo, lo que aprendo y lo que me rompe la cabeza a nivel profesional.
 
-AstroPaper provides a solid foundation for blogs, or even portfolios\_ with full markdown support, built-in dark mode, and a clean layout that works out-of-the-box.
+Este blog es mi bitácora pública: experimentos con IA, automatización de
+finanzas y operaciones, herramientas que pruebo (y las que descarto), y lecciones
+de proyectos reales de código.
 
-The blog posts in this theme also serve as guides, docs or example articles\_ making AstroPaper a flexible starting point for your next content-driven site.
+## Dónde encontrarme
 
-## Features
+- [GitHub](https://github.com/BastianMR) — código y proyectos
+- [LinkedIn](https://www.linkedin.com/in/bas-marquezriffo/) — lo profesional
+- [X / Twitter](https://x.com/Tweakers_BAMR) — lo diario
+- [Instagram](https://www.instagram.com/tweakers_bamr/) — el detrás de cámaras
+- [Platzi](https://platzi.com/p/bastian-marquez-riffo/) — lo que estoy estudiando
 
-AstroPaper comes with a set of useful features that make content publishing easy and effective:
+## Off-topic 🎮
 
-- SEO-friendly
-- Fast performance
-- Light & dark mode
-- Highly customizable
-- Organizable blog posts
-- Responsive & accessible
-- Static search with [PageFind](https://pagefind.app/)
-- Automatic social image generation
+Cuando no estoy optimizando procesos, estoy optimizando amenazas: **tank main
+en World of Warcraft**. Toda la squad de tanques, aquí:
 
-and so much more.
+- [Hirperyon](https://www.warcraftlogs.com/character/us/quelthalas/hirperyon) — **DK Blood** (main)
+- [Hipokayzerwr](https://www.warcraftlogs.com/character/us/quelthalas/hipokayzerwr) — Warrior Protection
+- [Ermeida](https://www.warcraftlogs.com/character/us/quelthalas/ermeida) — Druid Tank
+- [Hípokayzer](https://www.warcraftlogs.com/character/us/quelthalas/h%C3%ADpokayzer) — DH Tank
+- [Helbrech](https://www.warcraftlogs.com/character/us/quelthalas/helbrech) — Paladin Tank
+- [Funnuraba](https://www.warcraftlogs.com/character/us/quelthalas/funnuraba) — Monk Tank
 
-## Show your support
-
-If you like [AstroPaper](https://github.com/satnaing/astro-paper), consider giving it a star ⭐️.
-
-Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue](https://github.com/satnaing/astro-paper/issues), submit a [pull request](https://github.com/satnaing/astro-paper/pulls) or start a [discussion](https://github.com/satnaing/astro-paper/discussions).
-
-If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
-
-Kyay zuu! 🙏🏼
+Tank de todo lo que se mueve. Los logs no mienten.

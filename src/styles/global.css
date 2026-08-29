@@ -9,7 +9,8 @@
   * {
     @apply border-border outline-accent/75;
     scrollbar-width: auto;
-    scrollbar-color: var(--color-muted) transparent;
+    scrollbar-color: color-mix(in oklab, var(--color-accent) 40%, transparent)
+      transparent;
   }
   a,
   button,

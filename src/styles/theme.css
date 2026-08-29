@@ -7,28 +7,20 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
+  --color-hover: var(--hover);
   --font-app: var(--font-google-sans-code);
 }
 
-/* Light theme values */
+/* Dark-only neon theme — same values for every data-theme value */
 :root,
-[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --accent-foreground: #ffffff;
-  --muted: #e6e6e6;
-  --muted-foreground: #6b7280;
-  --border: #ece9e9;
-}
-
-/* Dark theme values */
+[data-theme="light"],
 [data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --accent-foreground: #ffffff;
-  --muted: #343f60;
-  --muted-foreground: #afb9ca;
-  --border: #ab4b08;
+  --background: #0d0d0d;
+  --foreground: #ffffff;
+  --accent: #00ff85;
+  --accent-foreground: #0d0d0d;
+  --hover: #ff0099;
+  --muted: #1a1a1a;
+  --muted-foreground: #9ca3af;
+  --border: #262626;
 }
