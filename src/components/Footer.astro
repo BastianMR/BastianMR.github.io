@@ -27,4 +27,39 @@ const currentYear = new Date().getFullYear();
       <span>{t.footer.allRightsReserved}</span>
     </div>
   </div>
+  <div class="flex items-end justify-center gap-2 pb-4 select-none" title="🤫 psst… un easter egg">
+    <img
+      src="/images/eastereggs/hi.png"
+      alt="Caballero de Guardian Tales saludando"
+      class="pixel-sprite hover:animate-bounce"
+      loading="lazy"
+      width="40"
+      height="40"
+    />
+    <img
+      src="/images/eastereggs/attack.png"
+      alt="Caballero de Guardian Tales levantando la espada"
+      class="pixel-sprite hover:animate-bounce"
+      loading="lazy"
+      width="40"
+      height="40"
+    />
+    <img
+      src="/images/eastereggs/sick.png"
+      alt="Caballero de Guardian Tales noqueado después de la caída"
+      class="pixel-sprite hover:animate-bounce"
+      loading="lazy"
+      width="40"
+      height="40"
+    />
+  </div>
 </footer>
+
+<style>
+  .pixel-sprite {
+    height: 2.5rem;
+    width: auto;
+    image-rendering: pixelated;
+    cursor: default;
+  }
+</style>
