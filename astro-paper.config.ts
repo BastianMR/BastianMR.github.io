@@ -3,7 +3,7 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://bastianmr.github.io",
-    title: "IA, Finanzas y Código",
+    title: "Bastian Marquez Riffo",
     description:
       "Blog de Bastian Marquez Riffo (Tweakers_BAMR): inteligencia artificial, finanzas, proyectos de código y vida de tanque en WoW.",
     author: "Bastian Marquez Riffo",
