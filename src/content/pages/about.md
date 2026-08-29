@@ -21,35 +21,41 @@ de trabajo (n8n, low-code).
 
 **ERP y Finanzas**
 
-<div class="flex flex-wrap items-center gap-4">
-  <img src="/icons/tech/sap.svg" alt="SAP Business One" title="SAP Business One" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
-  <img src="/icons/tech/excel.svg" alt="Microsoft Excel" title="Microsoft Excel" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
-  <img src="/icons/tech/googlesheets.svg" alt="Google Sheets" title="Google Sheets" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+<div class="flex flex-wrap gap-2">
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">SAP Business One</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Excel</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Google Sheets</span>
 </div>
 
 **IA**
 
-<div class="flex flex-wrap items-center gap-4">
-  <img src="/icons/tech/chatgpt.svg" alt="ChatGPT" title="ChatGPT" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
-  <img src="/icons/tech/googlegemini.svg" alt="Gemini" title="Gemini" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
-  <img src="/icons/tech/notebooklm.svg" alt="NotebookLM" title="NotebookLM" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+<div class="flex flex-wrap gap-2">
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">ChatGPT</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Gemini</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">NotebookLM</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Claude</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">MiniMax</span>
 </div>
 
 **Automatización y Gestión**
 
-<div class="flex flex-wrap items-center gap-4">
-  <img src="/icons/tech/n8n.svg" alt="n8n" title="n8n" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
-  <img src="/icons/tech/notion.svg" alt="Notion" title="Notion" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
-  <img src="/icons/tech/planner.svg" alt="Microsoft Planner" title="Microsoft Planner" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
-  <img src="/icons/tech/google.svg" alt="GSuite / Google Workspace" title="GSuite / Google Workspace" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+<div class="flex flex-wrap gap-2">
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">n8n</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Notion</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Obsidian</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Linear</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Planner</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">GSuite</span>
 </div>
 
-**Dev (este blog)**
+**Dev y Agentes**
 
-<div class="flex flex-wrap items-center gap-4">
-  <img src="/icons/tech/astro.svg" alt="Astro" title="Astro" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
-  <img src="/icons/tech/git.svg" alt="Git" title="Git" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
-  <img src="/icons/tech/github.svg" alt="GitHub" title="GitHub" class="size-10 cursor-default transition-transform duration-200 hover:scale-125" loading="lazy" />
+<div class="flex flex-wrap gap-2">
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Astro</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Git</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">GitHub</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">OpenCode</span>
+  <span class="inline-block rounded-full border border-border px-3 py-1 text-sm hover:animate-bounce">Hermes Agent</span>
 </div>
 
 ## Logros y proyectos 🧩
