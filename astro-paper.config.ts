@@ -5,8 +5,8 @@ export default defineAstroPaperConfig({
     url: "https://bastianmr.github.io",
     title: "IA, Finanzas y Código",
     description:
-      "Blog de Tweakers_BAMR: inteligencia artificial, finanzas, proyectos de código y vida de tanque en WoW.",
-    author: "Tweakers_BAMR",
+      "Blog de Bastian Marquez Riffo (Tweakers_BAMR): inteligencia artificial, finanzas, proyectos de código y vida de tanque en WoW.",
+    author: "Bastian Marquez Riffo",
     profile: "https://github.com/BastianMR",
     ogImage: "default-og.jpg",
     lang: "es",
@@ -21,7 +21,7 @@ export default defineAstroPaperConfig({
   features: {
     lightAndDarkMode: false,
     dynamicOgImage: true,
-    showArchives: true,
+    showArchives: false,
     showBackButton: true,
     editPost: {
       enabled: false,

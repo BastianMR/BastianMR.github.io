@@ -3,7 +3,7 @@ title: "Sobre mí"
 description: "Quién está detrás de IA, Finanzas y Código."
 ---
 
-## Tweakers_BAMR 👋
+## Bastian Marquez Riffo — Tweakers_BAMR 👋
 
 **AI-Driven Finance & Operations Specialist**. Nerd entusiasta de la inteligencia
 artificial, las finanzas y los proyectos de código. Escribo sobre lo que
