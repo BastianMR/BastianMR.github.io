@@ -27,6 +27,7 @@ de trabajo (n8n, low-code).
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Odoo</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Excel</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Google Sheets</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Microsoft 365</span>
 </div>
 
 **IA**
@@ -37,6 +38,7 @@ de trabajo (n8n, low-code).
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">NotebookLM</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Claude</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">MiniMax</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Microsoft Copilot</span>
 </div>
 
 **Automatización y Gestión**
@@ -47,18 +49,35 @@ de trabajo (n8n, low-code).
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">ClickUp</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Obsidian</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Linear</span>
-  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Planner</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Microsoft Planner</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">EOS</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Project Management</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Agile</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">GSuite</span>
+</div>
+
+**Visualización y Procesos**
+
+<div class="flex flex-wrap gap-2">
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Excalidraw</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Mermaid</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">BPMN</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Miro</span>
 </div>
 
 **Dev y Agentes**
 
 <div class="flex flex-wrap gap-2">
-  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Astro</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Git</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">GitHub</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">OpenCode</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Hermes Agent</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Python</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Supabase</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Docker</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">SQL</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Prompt Engineering</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Vibe Coding</span>
 </div>
 
 ## Logros y proyectos 🧩
@@ -82,7 +101,7 @@ de trabajo (n8n, low-code).
 - **Testimonios de experiencias laborales — FEN UAH**
   [Rompiendo paradigmas de la profesión de oficina](https://fen.uahurtado.cl/2020/noticias/testimonio-experiencias-laborales-rompiendo-paradigmas-de-la-profesion-de-oficina-bastian-marquez/) ·
   [Práctica profesional en Deloitte](https://experienciaslaboralesfen.blogspot.com/2021/07/practica-profesional-en-deloitte_6.html)
-- **Deportista federado — Fútbol Americano (Tackle) 🏈** (2016–actualidad)
+- **Deportista federado — Fútbol Americano (Tackle) 🏈** (2016–2024)
   Equipo Patriotas, Santiago de Chile.
   [Instagram @patriotas_football](https://www.instagram.com/patriotas_football/)
 
