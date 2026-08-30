@@ -1,0 +1,29 @@
+name: "Reporte de bug"
+description: "Comportamiento incorrecto o inesperado"
+labels: ["bug"]
+body:
+  - type: textarea
+    id: que-paso
+    attributes:
+      label: "Qué pasó"
+      description: "Descripción clara del problema."
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: "Comportamiento esperado"
+    validations:
+      required: true
+  - type: textarea
+    id: pasos
+    attributes:
+      label: "Pasos para reproducir"
+    validations:
+      required: false
+  - type: textarea
+    id: contexto
+    attributes:
+      label: "Contexto adicional"
+    validations:
+      required: false
