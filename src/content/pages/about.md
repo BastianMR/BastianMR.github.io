@@ -44,6 +44,7 @@ de trabajo (n8n, low-code).
 <div class="flex flex-wrap gap-2">
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">n8n</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Notion</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">ClickUp</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Obsidian</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Linear</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Planner</span>
