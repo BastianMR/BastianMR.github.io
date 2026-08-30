@@ -17,6 +17,27 @@ Mi zona de juego: planificación financiera (FP&A), auditoría externa (Big 4) y
 modernización de operaciones financieras con IA generativa y automatización de flujos
 de trabajo (n8n, low-code).
 
+## Experiencia
+
+- **AI-Driven Finance & Operations Specialist — Independiente** (Oct 2025 – actualidad)
+  Consultoría AI-driven para startups y Pymes: automatizaciones financieras,
+  asistentes RAG, prototipado rápido. 100% integridad en EEFF y runway a 12 meses.
+- **Analista de Contabilidad — Orión** (Feb – Oct 2025, holding regional, 5 países)
+  Consolidación financiera multi-divisa y **Champion de IA** del área: adopté
+  Notion + RAG + n8n para los cierres mensuales.
+- **Analista de Contabilidad — Serbanc** (Sep 2023 – Feb 2025)
+  Cierre contable mensual en SAP Business One: provisiones, F29, reclasificaciones,
+  ajustes, factoring. Dashboards en Google Sheets.
+- **Analista de Contabilidad y Finanzas — Etiner Labs** (Abr 2022 – Feb 2023)
+  Estandarización contable-financiera para toma de decisiones: extendí el horizonte
+  de visibilidad de 3 a 12 meses con un modelo de runway.
+- **Auditor Financiero (Staff in Audit Private) — Deloitte** (Dic 2020 – Mar 2022)
+  Más de 38 auditorías multisectoriales: efectivo, cuentas por cobrar y pagar,
+  PPE, inventarios en terreno y procedimientos indagatorios. Base Big 4.
+- **Profesor Asistente de Cátedra e Investigación — Universidad Alberto Hurtado** (2018–2021)
+  Ayudantías de análisis de procesos de negocio, fundamentos de auditoría, bases
+  de datos y Excel aplicado a contabilidad. Investigación contable colaborativa.
+
 ## Stack
 
 **ERP y Finanzas**
@@ -25,7 +46,7 @@ de trabajo (n8n, low-code).
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">SAP Business One</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">NextERP</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Odoo</span>
-  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Excel</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Excel Avanzado</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Google Sheets</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Microsoft 365</span>
 </div>
@@ -63,6 +84,7 @@ de trabajo (n8n, low-code).
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Mermaid</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">BPMN</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Miro</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Google Colab</span>
 </div>
 
 **Dev y Agentes**
@@ -78,10 +100,18 @@ de trabajo (n8n, low-code).
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">SQL</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Prompt Engineering</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Vibe Coding</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">RAG</span>
 </div>
 
 ## Logros y proyectos 🧩
 
+- **Reconocimiento ORION Q2 2025 — "Trabajemos en equipo, siempre"**
+  Distinción interna del programa _Juntos Somos Evolución_ (Orion - Gentiltek Talento y Cultura)
+  por el impacto del trabajo colaborativo durante el trimestre.
+- **Miembro & Secretario del Equipo de Liderazgo — BNI Excelencia**
+  Participación activa en el equipo de liderazgo del capítulo.
+- **Financial Decisions Challenge — Platzi**
+  Desafío práctico de decisiones financieras basado en casos.
 - **3er lugar en investigación — CONECAC 2019** (Universidad Católica del Norte)
   "El emprendimiento en la carrera contador público y/o auditor: ¿el estudiante de la
   carrera tiene perfil de emprendedor?"
@@ -93,6 +123,19 @@ de trabajo (n8n, low-code).
 - **Programa de formación de líderes y mentores sociales — Incuba UAH** (2022)
 
 ![Programa de formación de líderes y mentores — Incuba UAH](/images/about/incuba-uah.jpg)
+
+- **SwiftDoc SaaS — Sistema de Gestión Documental con Generación Masiva**
+  Especificación completa de un SaaS para plantillas Word con Jinja2, mail merge
+  desde Excel/CSV y generación masiva de PDFs en una operación.
+- **n8n Self-Hosted en Producción — Setup Completo con Docker**
+  Pipelines financieros reales en producción: integraciones API, backups,
+  monitoreo y mantenimiento.
+- **Agente Scrapper de Precios con IA — E-commerce Chileno**
+  Automatización con IA para monitoreo de precios en retailers locales.
+- **Generador Masivo de PDFs — Google Sheets + n8n + Apps Script**
+  Pipeline que dio origen a varios reportes automatizados de mis posts del blog.
+- **Agente de análisis de logs de WoW — n8n + GraphQL**
+  Prueba de concepto para extraer métricas de combate desde Warcraftlogs.
 
 - **Representante de la carrera Contador Público Auditor — UAH** (2018–2020)
   Charlas y orientación vocacional para nuevos estudiantes:
@@ -106,6 +149,11 @@ de trabajo (n8n, low-code).
   [Instagram @patriotas_football](https://www.instagram.com/patriotas_football/)
 
 ![Fútbol americano — Patriotas](/images/about/futbol-americano.jpg)
+
+## Docencia
+
+- **Profesor asistente — Diplomado en Control de Gestión** (UNAB)
+- **Profesor — Diplomado en Herramientas Digitales e Innovación** (UTEM)
 
 ## Dónde encontrarme
 
