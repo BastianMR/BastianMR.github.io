@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" role="img" aria-labelledby="okf-title okf-desc">
+  <title id="okf-title">OKF v0.2: señales de confianza en el frontmatter</title>
+  <desc id="okf-desc">A la izquierda, las cinco preguntas que responde un concepto y el campo de frontmatter que las contesta. A la derecha, los tres niveles de confianza que se derivan del campo verified: sin verificar, confirmado por máquina y revisado por humano.</desc>
+  <style>
+    .sans { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .w { fill: #ffffff; }
+    .m { fill: #9ca3af; }
+    .a { fill: #00ff85; }
+  </style>
+
+  <rect x="0.75" y="0.75" width="958.5" height="558.5" rx="18" fill="#0d0d0d" stroke="#262626" stroke-width="1.5" />
+
+  <text x="40" y="56" class="sans w" font-size="24" font-weight="700">OKF v0.2: señales de confianza en el frontmatter</text>
+  <text x="40" y="82" class="sans m" font-size="14">Las cinco preguntas que responde un concepto, y los niveles de confianza que se derivan de él.</text>
+
+  <!-- Panel izquierdo -->
+  <rect x="40" y="106" width="590" height="414" rx="14" fill="#111111" stroke="#262626" stroke-width="1.5" />
+  <text x="64" y="142" class="sans m" font-size="13" letter-spacing="0.5">EL FRONTMATTER RESPONDE</text>
+
+  <!-- Fila 1 -->
+  <text x="64" y="192" class="sans w" font-size="15">¿De dónde salió esto?</text>
+  <text x="330" y="192" class="sans a" font-size="16">→</text>
+  <rect x="360" y="168" width="246" height="36" rx="9" fill="#0d0d0d" stroke="#262626" stroke-width="1.5" />
+  <text x="380" y="192" class="mono a" font-size="14">sources</text>
+
+  <!-- Fila 2 -->
+  <text x="64" y="258" class="sans w" font-size="15">¿Cuánto debería confiar?</text>
+  <text x="330" y="258" class="sans a" font-size="16">→</text>
+  <rect x="360" y="234" width="246" height="36" rx="9" fill="#0d0d0d" stroke="#262626" stroke-width="1.5" />
+  <text x="380" y="258" class="mono a" font-size="14">generated · verified</text>
+
+  <!-- Fila 3 -->
+  <text x="64" y="324" class="sans w" font-size="15">¿Sigue siendo verdad?</text>
+  <text x="330" y="324" class="sans a" font-size="16">→</text>
+  <rect x="360" y="300" width="246" height="36" rx="9" fill="#0d0d0d" stroke="#262626" stroke-width="1.5" />
+  <text x="380" y="324" class="mono a" font-size="14">stale_after</text>
+
+  <!-- Fila 4 -->
+  <text x="64" y="390" class="sans w" font-size="15">¿Es la versión actual?</text>
+  <text x="330" y="390" class="sans a" font-size="16">→</text>
+  <rect x="360" y="366" width="246" height="36" rx="9" fill="#0d0d0d" stroke="#262626" stroke-width="1.5" />
+  <text x="380" y="390" class="mono a" font-size="14">status</text>
+
+  <!-- Fila 5 -->
+  <text x="64" y="456" class="sans w" font-size="15">¿Cómo se calculó?</text>
+  <text x="330" y="456" class="sans a" font-size="16">→</text>
+  <rect x="360" y="432" width="246" height="36" rx="9" fill="#0d0d0d" stroke="#262626" stroke-width="1.5" />
+  <text x="380" y="456" class="mono a" font-size="14">Attested Computation</text>
+
+  <!-- Panel derecho -->
+  <rect x="650" y="106" width="270" height="414" rx="14" fill="#111111" stroke="#262626" stroke-width="1.5" />
+  <text x="672" y="142" class="sans w" font-size="14" font-weight="700">Niveles de confianza</text>
+  <text x="672" y="164" class="mono m" font-size="12">derivado de verified</text>
+
+  <!-- Tier 1 -->
+  <rect x="672" y="188" width="226" height="54" rx="11" fill="#0d0d0d" stroke="#262626" stroke-width="1.5" />
+  <text x="692" y="221" class="sans m" font-size="13">sin verificar</text>
+
+  <!-- Tier 2 -->
+  <rect x="672" y="256" width="226" height="54" rx="11" fill="#0d0d0d" stroke="#262626" stroke-width="1.5" />
+  <text x="692" y="289" class="sans w" font-size="13">confirmado por máquina</text>
+
+  <!-- Tier 3 -->
+  <rect x="672" y="324" width="226" height="54" rx="11" fill="#0d0d0d" stroke="#00ff85" stroke-width="1.5" />
+  <text x="692" y="357" class="sans a" font-size="13">revisado por humano</text>
+
+  <text x="672" y="416" class="sans m" font-size="12">El prefijo human: en un actor</text>
+  <text x="672" y="434" class="sans m" font-size="12">sube el concepto de nivel.</text>
+  <text x="672" y="470" class="sans m" font-size="12">más confianza ↑</text>
+</svg>
