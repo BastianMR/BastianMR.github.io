@@ -23,8 +23,8 @@ tags: ["ia", "finanzas", "código"]
 
 ## Comandos
 
-| Comando       | Acción                              |
-| ------------- | ----------------------------------- |
-| `npm install` | Instalar dependencias               |
-| `npm run dev` | Servidor local en `localhost:4321`  |
-| `npm run build` | Build de producción a `./dist/`   |
+| Comando         | Acción                             |
+| --------------- | ---------------------------------- |
+| `npm install`   | Instalar dependencias              |
+| `npm run dev`   | Servidor local en `localhost:4321` |
+| `npm run build` | Build de producción a `./dist/`    |

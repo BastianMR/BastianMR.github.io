@@ -1,0 +1,20 @@
+# Normalize all text files to LF in the repository and on checkout.
+* text=auto eol=lf
+
+# Explicit binary files (never normalize).
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.xlsx binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.gz binary
+*.zip binary
+
+# Keep generated artifacts out of diffs.
+public/pagefind/** linguist-generated

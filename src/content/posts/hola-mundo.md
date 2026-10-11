@@ -2,8 +2,9 @@
 pubDatetime: 2026-08-28T12:00:00-04:00
 title: "Hola mundo: IA, finanzas y código"
 description: "Por qué arranco este blog y qué vas a encontrar acá: experimentos con IA, finanzas, proyectos de código y algo de vida de tanque en WoW."
-tags: ["intro", "ia", "finanzas", "código"]
+tags: [intro, ia, finanzas, código]
 featured: true
+timezone: "America/Santiago"
 ---
 
 Bienvenido a **IA, Finanzas y Código**. Soy Tweakers_BAMR y este es el lugar
