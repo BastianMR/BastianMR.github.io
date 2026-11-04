@@ -17,26 +17,37 @@ Mi zona de juego: planificación financiera (FP&A), auditoría externa (Big 4) y
 modernización de operaciones financieras con IA generativa y automatización de flujos
 de trabajo (n8n, low-code).
 
+**En números:** 5+ años en finanzas y auditoría (Deloitte Big 4, Orion holding regional,
+Serbanc, Etiner Labs, consultoría independiente). Cierre contable mensual adelantado
+del día 15 al día 10. Ciclo de reportes financieros de 1-2 semanas a 1-2 días.
+38+ auditorías multisectoriales en Big 4.
+
 ## Experiencia
 
 - **AI-Driven Finance & Operations Specialist — Independiente** (Oct 2025 – actualidad)
-  Consultoría AI-driven para startups y Pymes: automatizaciones financieras,
-  asistentes RAG, prototipado rápido. 100% integridad en EEFF y runway a 12 meses.
+  Consultoría para pymes y startups: automatización de procesos financieros, asistentes
+  con IA, prototipado rápido. Ciclo de reportes de 1-2 semanas a 1-2 días.
+  100% de trazabilidad en estados financieros. Servicio bajo retainer mensual y
+  proyectos puntuales.
 - **Analista de Contabilidad — Orión** (Feb – Oct 2025, holding regional, 5 países)
-  Consolidación financiera multi-divisa y **Champion de IA** del área: adopté
-  Notion + RAG + n8n para los cierres mensuales.
+  Consolidación financiera multi-divisa. Coordinación de equipos contables externos
+  (BPO) en Chile, Colombia, Perú, Ecuador y México. Unificación de criterios contables
+  entre filiales. Reconocimiento Q2 2025 "Trabajemos en equipo, siempre".
 - **Analista de Contabilidad — Serbanc** (Sep 2023 – Feb 2025)
   Cierre contable mensual en SAP Business One: provisiones, F29, reclasificaciones,
-  ajustes, factoring. Dashboards en Google Sheets.
+  ajustes, factoring. Adelanté el cierre del día 15 al día 10.
 - **Analista de Contabilidad y Finanzas — Etiner Labs** (Abr 2022 – Feb 2023)
-  Estandarización contable-financiera para toma de decisiones: extendí el horizonte
-  de visibilidad de 3 a 12 meses con un modelo de runway.
+  Estandarización contable-financiera para toma de decisiones. Extendí el horizonte de
+  visibilidad financiera de 1-2 meses a 12 meses con un modelo de runway.
+  Operación multi-moneda (CLP, USD, UF).
 - **Auditor Financiero (Staff in Audit Private) — Deloitte** (Dic 2020 – Mar 2022)
   Más de 38 auditorías multisectoriales: efectivo, cuentas por cobrar y pagar,
   PPE, inventarios en terreno y procedimientos indagatorios. Base Big 4.
 - **Profesor Asistente de Cátedra e Investigación — Universidad Alberto Hurtado** (2018–2021)
   Ayudantías de análisis de procesos de negocio, fundamentos de auditoría, bases
   de datos y Excel aplicado a contabilidad. Investigación contable colaborativa.
+- **Ventas y Atención de Público — Botillería (negocio familiar)** (Mar – Ago 2023)
+  Atención al cliente y operación de tienda.
 
 ## Stack
 
@@ -45,9 +56,13 @@ de trabajo (n8n, low-code).
 <div class="flex flex-wrap gap-2">
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">SAP Business One</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Odoo</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Magnus</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">ERPNext</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Excel Avanzado</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Google Sheets</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Microsoft 365</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Facturación.cl</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Mercado Pago</span>
 </div>
 
 **IA**
@@ -94,12 +109,18 @@ de trabajo (n8n, low-code).
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">OpenCode</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Hermes Agent</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Python</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">FastAPI</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">React</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Supabase</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Docker</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">PostgreSQL</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">SQL</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">GraphQL</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Prompt Engineering</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Vibe Coding</span>
   <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">RAG</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Orca IDE</span>
+  <span class="inline-block rounded-full border border-accent bg-muted px-3 py-1 text-sm text-accent transition-colors hover:animate-bounce hover:border-hover hover:text-hover">Pi programming</span>
 </div>
 
 ## Logros y proyectos 🧩
@@ -125,14 +146,22 @@ de trabajo (n8n, low-code).
 
 - **SwiftDoc SaaS — Sistema de Gestión Documental con Generación Masiva**
   Especificación completa de un SaaS para plantillas Word con Jinja2, mail merge
-  desde Excel/CSV y generación masiva de PDFs en una operación.
+  desde Excel/CSV y generación masiva de PDFs en una operación. 100 PDFs en menos
+  de 60 segundos, modelo freemium/Pro/Enterprise.
 - **n8n Self-Hosted en Producción — Setup Completo con Docker**
   Pipelines financieros reales en producción: integraciones API, backups,
-  monitoreo y mantenimiento.
+  monitoreo y mantenimiento. Concurrencia 12, persistencia de ejecuciones,
+  auto-prune a 21 días sobre PostgreSQL.
 - **Agente Scrapper de Precios con IA — E-commerce Chileno**
-  Automatización con IA para monitoreo de precios en retailers locales.
+  Automatización con IA para monitoreo de precios en retailers locales. Resolución
+  de bloqueos anti-bot (Cloudflare), proxies residenciales, normalización de
+  precios chilenos.
 - **Generador Masivo de PDFs — Google Sheets + n8n + Apps Script**
   Pipeline que dio origen a varios reportes automatizados de mis posts del blog.
+  Trazabilidad por fila procesada, almacenamiento automático en Google Drive.
+- **Modelo de Runway Financiero — Etiner Labs**
+  Visibilidad financiera de 1-2 meses a 12 meses. Multi-moneda (CLP, USD, UF).
+  Instrumento de decisión para gastos, contrataciones y pricing.
 - **Agente de análisis de logs de WoW — n8n + GraphQL**
   Prueba de concepto para extraer métricas de combate desde Warcraftlogs.
 
@@ -152,7 +181,32 @@ de trabajo (n8n, low-code).
 ## Docencia
 
 - **Profesor asistente — Diplomado en Control de Gestión** (UNAB)
+  Sistemas de información para el control de gestión: tableros estratégicos y BI
+  para profesionales de postgrado.
 - **Profesor — Diplomado en Herramientas Digitales e Innovación** (UTEM)
+  2 módulos completos, 20 funcionarios públicos capacitados (ago 2025 – feb 2026).
+
+## Formación y Certificaciones
+
+**Grado**
+- Contador Auditor — Universidad Alberto Hurtado (2017–2021)
+
+**Certificaciones de alto peso**
+- Digital Product Management: Modern Fundamentals — University of Virginia
+- Software Product Management — University of Alberta
+- Agile Development Specialization — University of Virginia
+- Diplomado en Actualización y Aplicación Tributaria 2025-2026 — Aula Tributaria SPA
+
+**Complementarias**
+- Peritaje Contable — Academia Forense Chile (2025)
+- DevOps Essentials Professional Certificate
+- Remote Work and Virtual Collaboration Professional Certificate
+- Master en Innovación Social — PlayGround Barcelona
+
+**Otros cursos**
+- Certificaciones en IA, automatización y desarrollo (Platzi, Coursera): Claude AI, Gemini,
+  Prompt Engineering, IA para Finanzas, Low-Code con n8n, Supabase, OpenClaw, Vibe Coding,
+  Desarrollo Ágil, Gestión de Proyectos, Excel Avanzado, Estadística Aplicada.
 
 ## Dónde encontrarme
 
