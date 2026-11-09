@@ -13,7 +13,7 @@ export default {
   },
   hud: {
     index: "Índice",
-    online: "En línea",
+    online: "Todo en orden, más o menos",
     posts: "posts",
     kicker: "blog personal",
   },
