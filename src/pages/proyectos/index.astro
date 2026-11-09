@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import StatusBadge from "@/components/StatusBadge.astro";
+import {
+  groupProjectsByStatus,
+  visibleProjects,
+} from "@/utils/visibleProjects";
+import { useTranslations } from "@/i18n";
+import config from "@/config";
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const t = useTranslations(locale);
+
+const projects = visibleProjects(await getCollection("projects"));
+const groups = groupProjectsByStatus(projects);
+---
+
+<Layout title={`${t.pages.projectsTitle} | ${config.site.title}`}>
+  <Header />
+
+  <Breadcrumb />
+
+  <Main pageTitle={t.pages.projectsTitle} pageDesc={t.pages.projectsDesc}>
+    {
+      groups.length === 0 && (
+        <p class="text-muted-foreground italic">{t.projects.empty}</p>
+      )
+    }
+
+    {
+      groups.map(({ status, entries }) => (
+        <section class="mb-10">
+          <h2 class="text-muted-foreground mb-2 flex items-center gap-3 text-[0.6875rem] tracking-[0.18em] uppercase">
+            <span>{t.projects.status[status]}</span>
+            <span aria-hidden="true" class="bg-border h-px flex-1" />
+            <span class="tabular-nums">{entries.length}</span>
+          </h2>
+          <ul>
+            {entries.map(entry => (
+              <li class="border-border grid gap-x-6 gap-y-2 border-b py-4 sm:grid-cols-[7rem_minmax(0,1fr)]">
+                <div class="pt-0.5">
+                  <StatusBadge status={entry.data.status} />
+                </div>
+                <div>
+                  <h3 class="text-accent text-base leading-snug font-medium">
+                    <a
+                      href={getRelativeLocaleUrl(
+                        locale,
+                        `proyectos/${entry.id}`
+                      )}
+                      class="decoration-dashed underline-offset-4 hover:underline"
+                    >
+                      {entry.data.title}
+                    </a>
+                  </h3>
+                  <p class="mt-1">{entry.data.description}</p>
+
+                  {entry.data.stack.length > 0 && (
+                    <ul class="text-muted-foreground mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[0.75rem]">
+                      {entry.data.stack.map(item => (
+                        <li>#{item}</li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {(entry.data.repo || entry.data.demo) && (
+                    <p class="mt-2 flex flex-wrap gap-x-4 text-[0.8125rem]">
+                      {entry.data.repo && (
+                        <a
+                          href={entry.data.repo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-accent decoration-dashed underline-offset-4 hover:underline"
+                        >
+                          {t.projects.repoLabel} ↗
+                        </a>
+                      )}
+                      {entry.data.demo && (
+                        <a
+                          href={entry.data.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-accent decoration-dashed underline-offset-4 hover:underline"
+                        >
+                          {t.projects.demoLabel} ↗
+                        </a>
+                      )}
+                    </p>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </Main>
+
+  <Footer />
+</Layout>

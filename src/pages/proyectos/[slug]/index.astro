@@ -1,0 +1,100 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import StatusBadge from "@/components/StatusBadge.astro";
+import { visibleProjects } from "@/utils/visibleProjects";
+import { useTranslations } from "@/i18n";
+import config from "@/config";
+
+export async function getStaticPaths() {
+  const projects = visibleProjects(await getCollection("projects"));
+
+  return projects.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+type Props = {
+  entry: CollectionEntry<"projects">;
+};
+
+const { entry } = Astro.props;
+const locale = Astro.currentLocale ?? config.site.lang;
+const t = useTranslations(locale);
+
+const { title, description, status, stack, repo, demo, updatedAt } = entry.data;
+const { Content } = await render(entry);
+---
+
+<Layout title={`${title} | ${config.site.title}`} description={description}>
+  <Header />
+
+  <Breadcrumb />
+
+  <Main pageTitle={title} pageDesc={description}>
+    <div class="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+      <StatusBadge {status} />
+      {
+        updatedAt && (
+          <p class="text-muted-foreground text-[0.8125rem]">
+            <time datetime={updatedAt.toISOString()}>
+              {updatedAt.toISOString().slice(0, 10)}
+            </time>
+          </p>
+        )
+      }
+      {
+        repo && (
+          <a
+            href={repo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent text-[0.8125rem] decoration-dashed underline-offset-4 hover:underline"
+          >
+            {t.projects.repoLabel} ↗
+          </a>
+        )
+      }
+      {
+        demo && (
+          <a
+            href={demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent text-[0.8125rem] decoration-dashed underline-offset-4 hover:underline"
+          >
+            {t.projects.demoLabel} ↗
+          </a>
+        )
+      }
+    </div>
+
+    {
+      stack.length > 0 && (
+        <ul class="text-muted-foreground mb-8 flex flex-wrap gap-x-3 gap-y-1 text-[0.75rem]">
+          <li class="sr-only">{t.projects.stackLabel}</li>
+          {stack.map(item => (
+            <li>#{item}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    <article
+      id="article"
+      class:list={[
+        "app-prose max-w-app",
+        "prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)",
+      ]}
+    >
+      <Content />
+    </article>
+  </Main>
+
+  <Footer />
+</Layout>

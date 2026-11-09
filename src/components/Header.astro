@@ -34,6 +34,7 @@ const isActive = (path: string) => {
 const railItems = [
   { path: "posts", label: t.nav.posts },
   { path: "noticias", label: t.nav.news },
+  { path: "proyectos", label: t.nav.projects },
   { path: "tags", label: t.nav.tags },
   { path: "about", label: t.nav.about },
   ...(features.search !== false
@@ -116,7 +117,7 @@ const padNumber = (value: number) => String(value).padStart(2, "0");
 >
   <p
     aria-hidden="true"
-    class="text-muted-foreground mb-2 hidden px-2 text-[0.625rem] tracking-[0.22em] uppercase min-[901px]:block"
+    class="text-muted-foreground mb-2 hidden ps-2.5 pe-2 text-[0.625rem] tracking-[0.22em] uppercase min-[901px]:block"
   >
     {t.hud.index}
   </p>
@@ -151,7 +152,7 @@ const padNumber = (value: number) => String(value).padStart(2, "0");
                   src="/images/eastereggs/attack.png"
                   alt=""
                   aria-hidden="true"
-                  class="pixel-sprite h-[18px] w-auto"
+                  class="pixel-sprite ms-auto hidden h-[18px] w-auto min-[901px]:block"
                   width="49"
                   height="41"
                 />
