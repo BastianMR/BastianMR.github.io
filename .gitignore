@@ -31,3 +31,11 @@ public/pagefind
 
 # docker compose
 compose.override.yaml
+
+# local agent tooling config (not part of the site)
+odd/
+orca.yaml
+.atl/
+
+# scratch dirs
+.tmp-*/
