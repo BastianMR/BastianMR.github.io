@@ -1,21 +1,21 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getPostUrl } from "@/utils/getPostPaths";
+import { getEntryUrl } from "@/utils/getEntryPaths";
 import { toTransitionName } from "@/utils/toTransitionName";
+import type { ContentEntry } from "@/utils/content";
 import Datetime from "./Datetime.astro";
 
 type Props = {
   variant?: "h2" | "h3";
-} & CollectionEntry<"posts">;
+} & ContentEntry;
 
-const { variant: Heading = "h2", id, data, filePath } = Astro.props;
+const { variant: Heading = "h2", collection, id, data, filePath } = Astro.props;
 
-const { title, description, ...props } = data;
+const { title, description, pubDatetime, modDatetime, timezone } = data;
 ---
 
 <li class="my-6">
   <a
-    href={getPostUrl(id, filePath, Astro.currentLocale)}
+    href={getEntryUrl(collection, id, filePath, Astro.currentLocale)}
     class:list={[
       "text-accent inline-block text-lg font-medium",
       "decoration-dashed underline-offset-4 hover:underline",
@@ -26,6 +26,6 @@ const { title, description, ...props } = data;
       {title}
     </Heading>
   </a>
-  <Datetime {...props} />
+  <Datetime {pubDatetime} {modDatetime} {timezone} />
   <p>{description}</p>
 </li>

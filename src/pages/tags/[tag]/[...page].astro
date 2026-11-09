@@ -9,21 +9,26 @@ import Card from "@/components/Card.astro";
 import Footer from "@/components/Footer.astro";
 import Pagination from "@/components/Pagination.astro";
 import { getUniqueTags } from "@/utils/getUniqueTags";
-import { getSortedPosts } from "@/utils/getSortedPosts";
+import { getSortedEntries } from "@/utils/getSortedEntries";
 import { slugifyAll } from "@/utils/slugify";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const posts = await getCollection("posts", ({ data }) => !data.draft);
-  const tags = getUniqueTags(posts);
+  const [posts, news] = await Promise.all([
+    getCollection("posts", ({ data }) => !data.draft),
+    getCollection("news", ({ data }) => !data.draft),
+  ]);
+  // Posts and news share one tag namespace, so a tag page lists both.
+  const entries = [...posts, ...news];
+  const tags = getUniqueTags(entries);
 
   return tags.flatMap(({ tag, tagName }) => {
-    const tagPosts = getSortedPosts(
-      posts.filter(({ data }) => slugifyAll(data.tags).includes(tag))
+    const tagEntries = getSortedEntries(
+      entries.filter(({ data }) => slugifyAll(data.tags).includes(tag))
     );
 
-    return paginate(tagPosts, {
+    return paginate(tagEntries, {
       params: { tag },
       props: { tagName },
       pageSize: config.posts.perPage,
@@ -47,7 +52,7 @@ const t = useTranslations(locale);
     pageDesc={`${t.pages.tagDesc} "${tagName}".`}
   >
     <ul>
-      {page.data.map(data => <Card {...data} />)}
+      {page.data.map(entry => <Card {...entry} />)}
     </ul>
   </Main>
 

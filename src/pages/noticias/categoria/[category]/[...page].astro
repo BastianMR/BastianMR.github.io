@@ -1,0 +1,59 @@
+---
+import type { GetStaticPathsOptions } from "astro";
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Card from "@/components/Card.astro";
+import Footer from "@/components/Footer.astro";
+import Pagination from "@/components/Pagination.astro";
+import { NEWS_CATEGORIES } from "@/content.config";
+import { getSortedEntries } from "@/utils/getSortedEntries";
+import { useTranslations } from "@/i18n";
+import config from "@/config";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const news = await getCollection("news", ({ data }) => !data.draft);
+
+  return NEWS_CATEGORIES.filter(category =>
+    news.some(entry => entry.data.category === category.id)
+  ).flatMap(category => {
+    const categoryNews = getSortedEntries(
+      news.filter(entry => entry.data.category === category.id)
+    );
+
+    return paginate(categoryNews, {
+      params: { category: category.id },
+      props: { categoryName: category.label },
+      pageSize: config.news.perPage,
+    });
+  });
+}
+
+const { page, categoryName } = Astro.props;
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const t = useTranslations(locale);
+---
+
+<Layout
+  title={`${t.pages.newsCategoryTitle}: ${categoryName} | ${config.site.title}`}
+>
+  <Header />
+
+  <Breadcrumb />
+
+  <Main
+    pageTitle={`${t.pages.newsCategoryTitle}: ${categoryName}`}
+    pageDesc={`${t.pages.newsCategoryDesc} "${categoryName}".`}
+  >
+    <ul>
+      {page.data.map(entry => <Card {...entry} />)}
+    </ul>
+  </Main>
+
+  <Pagination {page} />
+
+  <Footer noMarginTop={page.lastPage > 1} />
+</Layout>

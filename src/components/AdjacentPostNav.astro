@@ -1,7 +1,8 @@
 ---
 import IconArrowLeft from "@/assets/icons/IconArrowLeft.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
-import { getPostUrl } from "@/utils/getPostPaths";
+import { getEntryUrl } from "@/utils/getEntryPaths";
+import type { ContentCollection } from "@/utils/content";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
@@ -14,9 +15,11 @@ type AdjacentPost = {
 type Props = {
   prevPost: AdjacentPost;
   nextPost: AdjacentPost;
+  /** Collection the entries belong to; keeps prev/next inside the same stream. */
+  collection?: ContentCollection;
 };
 
-const { prevPost, nextPost } = Astro.props;
+const { prevPost, nextPost, collection = "posts" } = Astro.props;
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
 ---
@@ -25,7 +28,7 @@ const t = useTranslations(locale);
   {
     prevPost && (
       <a
-        href={getPostUrl(prevPost.id, prevPost.filePath, locale)}
+        href={getEntryUrl(collection, prevPost.id, prevPost.filePath, locale)}
         class="flex w-full gap-1 hover:opacity-75"
       >
         <IconArrowLeft class="inline-block flex-none rtl:rotate-180" />
@@ -39,7 +42,7 @@ const t = useTranslations(locale);
   {
     nextPost && (
       <a
-        href={getPostUrl(nextPost.id, nextPost.filePath, locale)}
+        href={getEntryUrl(collection, nextPost.id, nextPost.filePath, locale)}
         class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"
       >
         <div>

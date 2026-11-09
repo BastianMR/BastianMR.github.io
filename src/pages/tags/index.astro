@@ -10,8 +10,11 @@ import { getUniqueTags } from "@/utils/getUniqueTags";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
-const posts = await getCollection("posts", ({ data }) => !data.draft);
-const tags = getUniqueTags(posts);
+const [posts, news] = await Promise.all([
+  getCollection("posts", ({ data }) => !data.draft),
+  getCollection("news", ({ data }) => !data.draft),
+]);
+const tags = getUniqueTags([...posts, ...news]);
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
