@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Design system — BastianMR.github.io</title>
+    <style>
+      :root {
+        --background: #0d0d0d;
+        --foreground: #ffffff;
+        --accent: #00ff85;
+        --accent-foreground: #0d0d0d;
+        --hover: #ff0099;
+        --muted: #1a1a1a;
+        --muted-foreground: #9ca3af;
+        --border: #262626;
+        --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+          "Liberation Mono", monospace;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--foreground);
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem 4rem;
+      }
+      h1 {
+        font-size: 1.875rem;
+        margin: 0 0 0.25rem;
+      }
+      .sub {
+        color: var(--muted-foreground);
+        margin: 0 0 2.5rem;
+        font-size: 0.875rem;
+      }
+      h2 {
+        font-size: 1rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+        margin: 2.5rem 0 1rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.5rem;
+      }
+      a {
+        color: var(--accent);
+      }
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px dashed var(--accent);
+        outline-offset: 2px;
+      }
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .swatch {
+        border: 1px solid var(--border);
+        border-radius: 0.25rem;
+        overflow: hidden;
+      }
+      .chip {
+        height: 4.5rem;
+      }
+      .swatch dl {
+        margin: 0;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+        line-height: 1.5;
+      }
+      .swatch dt {
+        color: var(--accent);
+      }
+      .swatch dd {
+        margin: 0;
+        color: var(--muted-foreground);
+      }
+      .type li {
+        margin: 0 0 0.75rem;
+        list-style: none;
+      }
+      .type {
+        margin: 0;
+        padding: 0;
+      }
+      .t1 {
+        font-size: 1.875rem;
+        font-weight: 700;
+      }
+      .t2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      .t3 {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: var(--accent);
+      }
+      .t4 {
+        font-size: 1rem;
+      }
+      .t5 {
+        font-size: 0.875rem;
+        color: var(--muted-foreground);
+      }
+      .meta {
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+      }
+      .space {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .space li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+        margin-bottom: 0.5rem;
+      }
+      .bar {
+        height: 0.5rem;
+        background: var(--accent);
+        border-radius: 1px;
+      }
+      .cols {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 2.5rem;
+      }
+      .card-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .card-list li {
+        margin: 0 0 1.5rem;
+      }
+      .card-list a {
+        text-decoration: none;
+        font-size: 1.125rem;
+        font-weight: 500;
+      }
+      .card-list a:hover {
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        text-underline-offset: 4px;
+      }
+      .card-list p {
+        margin: 0.25rem 0 0;
+      }
+      .tag-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        color: var(--foreground);
+        text-decoration: none;
+        border-bottom: 2px dashed var(--foreground);
+        font-size: 0.875rem;
+      }
+      .tag:hover {
+        border-color: var(--hover);
+        color: var(--hover);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 0.25rem;
+        color: var(--foreground);
+        text-decoration: none;
+        font-size: 0.875rem;
+      }
+      .btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .breadcrumb {
+        font-size: 0.875rem;
+        color: var(--muted-foreground);
+        font-weight: 300;
+      }
+      .note {
+        border-left: 2px solid var(--accent);
+        padding-left: 0.75rem;
+        color: var(--muted-foreground);
+        font-size: 0.8125rem;
+        font-style: italic;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Design system</h1>
+      <p class="sub">
+        bastianmr.github.io — tema oscuro único, acento neón, tipografía mono.
+        Valores leídos de src/styles/theme.css y typography.css.
+      </p>
+
+      <h2>Color</h2>
+      <ul class="swatches">
+        <li class="swatch">
+          <div class="chip" style="background: #0d0d0d"></div>
+          <dl>
+            <dt>--background</dt>
+            <dd>#0d0d0d · fondo</dd>
+          </dl>
+        </li>
+        <li class="swatch">
+          <div class="chip" style="background: #ffffff"></div>
+          <dl>
+            <dt>--foreground</dt>
+            <dd>#ffffff · texto</dd>
+          </dl>
+        </li>
+        <li class="swatch">
+          <div class="chip" style="background: #00ff85"></div>
+          <dl>
+            <dt>--accent</dt>
+            <dd>#00ff85 · enlaces</dd>
+          </dl>
+        </li>
+        <li class="swatch">
+          <div class="chip" style="background: #ff0099"></div>
+          <dl>
+            <dt>--hover</dt>
+            <dd>#ff0099 · hover</dd>
+          </dl>
+        </li>
+        <li class="swatch">
+          <div class="chip" style="background: #1a1a1a"></div>
+          <dl>
+            <dt>--muted</dt>
+            <dd>#1a1a1a · superficie</dd>
+          </dl>
+        </li>
+        <li class="swatch">
+          <div class="chip" style="background: #9ca3af"></div>
+          <dl>
+            <dt>--muted-foreground</dt>
+            <dd>#9ca3af · metadatos</dd>
+          </dl>
+        </li>
+        <li class="swatch">
+          <div class="chip" style="background: #262626"></div>
+          <dl>
+            <dt>--border</dt>
+            <dd>#262626 · filetes</dd>
+          </dl>
+        </li>
+        <li class="swatch">
+          <div class="chip" style="background: #0d0d0d; border-bottom: 1px solid #262626"></div>
+          <dl>
+            <dt>--accent-foreground</dt>
+            <dd>#0d0d0d · sobre accent</dd>
+          </dl>
+        </li>
+      </ul>
+
+      <h2>Tipografía</h2>
+      <ul class="type">
+        <li><span class="t1">Título de página</span> <span class="meta">h1 · 1.875rem / 700</span></li>
+        <li><span class="t2">Título de sección</span> <span class="meta">h2 · 1.5rem / 600</span></li>
+        <li><span class="t3">Título de entrada</span> <span class="meta">1.125rem / 500 · accent</span></li>
+        <li><span class="t4">Párrafo de cuerpo, descripción de entrada y texto de artículo.</span> <span class="meta">1rem</span></li>
+        <li><span class="t5">18 Feb, 2026 · fecha y metadatos</span> <span class="meta">0.875rem · muted</span></li>
+      </ul>
+
+      <h2>Espaciado y filetes</h2>
+      <div class="cols">
+        <ul class="space">
+          <li><span class="bar" style="width: 1.5rem"></span> 1.5rem · entre entradas</li>
+          <li><span class="bar" style="width: 3rem"></span> 3rem · entre secciones</li>
+          <li><span class="bar" style="width: 4rem"></span> 4rem · cierre de página</li>
+          <li><span class="bar" style="width: 0.125rem; height: 1rem"></span> 2px punteado · subrayado de enlace</li>
+        </ul>
+        <p class="note">
+          Sin sombras y sin radios: el único radio (0.25rem) aparece en
+          <code>code</code> y en botones. Todo lo demás se separa con filetes de 1px.
+        </p>
+      </div>
+
+      <h2>Componentes</h2>
+      <div class="cols">
+        <div>
+          <p class="meta">Card de listado</p>
+          <ul class="card-list">
+            <li>
+              <a href="#">OpenAI abre su modelo de razonamiento con ventana de un millón de tokens</a>
+              <p class="t5">18 Feb, 2026</p>
+              <p class="t4">El acceso pasa a estar disponible en la API para cuentas de pago.</p>
+            </li>
+          </ul>
+          <p class="meta">Tags</p>
+          <ul class="tag-row">
+            <li><a class="tag" href="#"># ia</a></li>
+            <li><a class="tag" href="#"># hardware</a></li>
+            <li><a class="tag" href="#"># estándares</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="meta">Breadcrumb</p>
+          <p class="breadcrumb">Inicio &raquo; Noticias</p>
+          <p class="meta">Botón de navegación</p>
+          <a class="btn" href="#">Todos los posts <span aria-hidden="true">→</span></a>
+          <p class="meta" style="margin-top: 1.25rem">Foco visible</p>
+          <p><a href="#">Enlace con foco</a> <span class="meta">outline 2px dashed accent, offset 2px</span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

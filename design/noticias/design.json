@@ -1,0 +1,28 @@
+{
+  "title": "Sección de noticias",
+  "brief": "Sección /noticias del blog personal BastianMR.github.io: stream de noticias de tecnología e IA separado del blog, con el mismo lenguaje visual (tema oscuro, acento verde neón #00ff85, hover magenta #ff0099, tipografía mono, filetes de 1px, sin sombras ni radios). Objetivo del lector: escanear qué pasó hoy y entrar a una noticia para leer el detalle y la fuente. Contenido de muestra: seis noticias ficticias con medios reales para juzgar densidad, no hechos publicados.",
+  "feature": "odd/tasks/news-section.md",
+  "artboards": [
+    {
+      "file": "01-flujo-cronologico.html",
+      "title": "Flujo cronológico",
+      "tradeoff": "Es lo que ya está implementado: máximo foco en el orden temporal y cero ruido, pero sin jerarquía editorial (la noticia importante se ve igual que la menor) y con poco contexto por tema.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "02-despacho.html",
+      "title": "Despacho (teletipo)",
+      "tradeoff": "Gana densidad y escaneo: hora y categoría en una gutter fija, filetes en lugar de bloques, todo cabe en una pantalla. Pierde la calidez del blog y la descripción queda relegada.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "03-tablero-editorial.html",
+      "title": "Tablero editorial",
+      "tradeoff": "Da jerarquía real: una noticia principal con fuente y contexto, el resto como breves. Exige elegir un lead y rompe el orden cronológico puro, así que cuesta automatizarlo.",
+      "width": 1440,
+      "height": 900
+    }
+  ]
+}

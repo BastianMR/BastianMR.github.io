@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "comments": [
+    {
+      "id": "f3842xy0",
+      "file": "02-consola-de-guerra.html",
+      "selector": "body > nav > div",
+      "excerpt": "tweakers_bamr v2026.11",
+      "comment": "esto no deberia etsar",
+      "createdAt": "2026-11-09T13:51:55.559Z",
+      "status": "resolved",
+      "sentAt": "2026-11-09T13:51:55.644Z",
+      "resolvedAt": "2026-11-09T14:11:08.998Z"
+    },
+    {
+      "id": "r7xamclt",
+      "file": "02-consola-de-guerra.html",
+      "selector": "body > header > div > div > span:nth-of-type(1)",
+      "excerpt": "EN LÍNEA",
+      "comment": "esto deberiamos quitarlo por un mensaje mas entretenido por asi decirlo",
+      "createdAt": "2026-11-09T14:19:47.480Z",
+      "status": "resolved",
+      "sentAt": "2026-11-09T14:19:50.803Z",
+      "resolvedAt": "2026-11-09T14:20:49.837Z"
+    },
+    {
+      "id": "i9f4unni",
+      "file": "02-consola-de-guerra.html",
+      "selector": "body > header > div > div > span:nth-of-type(1)",
+      "excerpt": "EN LÍNEA",
+      "comment": "esto deberiamos quitarlo por un mensaje mas entretenido por asi decirlo",
+      "createdAt": "2026-11-09T14:20:13.997Z",
+      "status": "resolved",
+      "sentAt": "2026-11-09T14:20:14.055Z",
+      "resolvedAt": "2026-11-09T14:20:50.385Z"
+    }
+  ]
+}

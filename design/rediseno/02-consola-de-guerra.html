@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Rediseño 02 — Consola de guerra · Bastian Marquez Riffo</title>
+    <style>
+      :root {
+        --background: #0d0d0d;
+        --foreground: #ffffff;
+        --accent: #00ff85;
+        --accent-foreground: #0d0d0d;
+        --hover: #ff0099;
+        --muted: #1a1a1a;
+        --muted-foreground: #9ca3af;
+        --border: #262626;
+        --bar-h: 3.5rem;
+        --rail-w: 12rem;
+        --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+          "Liberation Mono", monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--foreground);
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px dashed var(--accent);
+        outline-offset: 2px;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        z-index: 20;
+        background: var(--background);
+        color: var(--accent);
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--border);
+        text-decoration: none;
+      }
+
+      .skip-link:focus {
+        left: 1rem;
+        top: 1rem;
+      }
+
+      .pixel-sprite {
+        image-rendering: pixelated;
+        display: block;
+        flex: none;
+      }
+
+      /* ---------- barra de estado ---------- */
+
+      .hud-bar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        height: var(--bar-h);
+        display: flex;
+        align-items: center;
+        background: var(--background);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .bar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 100%;
+        padding: 0 1.5rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.625rem;
+        text-decoration: none;
+        font-size: 1.0625rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+
+      .brand-sprite {
+        height: 22px;
+        width: auto;
+      }
+
+      .brand:hover .brand-sprite {
+        animation: hop 0.5s ease-out 1;
+      }
+
+      @keyframes hop {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .online {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .dot {
+        width: 6px;
+        height: 6px;
+        background: var(--accent);
+        animation: pulse 2.4s steps(2, end) infinite;
+      }
+
+      @keyframes pulse {
+        50% {
+          opacity: 0.2;
+        }
+      }
+
+      .status .sep {
+        color: var(--border);
+      }
+
+      .status .counter {
+        color: var(--muted-foreground);
+      }
+
+      /* ---------- riel ---------- */
+
+      .rail {
+        position: fixed;
+        top: var(--bar-h);
+        bottom: 0;
+        left: 0;
+        width: var(--rail-w);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.75rem 1.5rem 1.25rem;
+        border-right: 1px solid var(--border);
+        overflow-y: auto;
+      }
+
+      .rail-title {
+        margin: 0 0 0.75rem;
+        padding: 0;
+        color: var(--muted-foreground);
+        font-size: 0.625rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .rail-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .rail-list a {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding: 0.5rem 0.5rem 0.5rem 0.375rem;
+        border-left: 2px solid transparent;
+        text-decoration: none;
+        font-size: 0.875rem;
+        line-height: 1.4;
+      }
+
+      .rail-list a:hover {
+        background: var(--muted);
+        color: var(--accent);
+      }
+
+      .rail-list a[aria-current="page"] {
+        background: var(--muted);
+        border-left-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .rail-list .num {
+        flex: 0 0 1rem;
+        color: var(--muted-foreground);
+        font-size: 0.6875rem;
+        letter-spacing: 0.08em;
+      }
+
+      .rail-list a[aria-current="page"] .num {
+        color: var(--accent);
+      }
+
+      .rail-list .label {
+        flex: 1;
+      }
+
+      .rail-sprite {
+        height: 18px;
+        width: auto;
+        align-self: center;
+        /* Out of the text flow: the labels of every item stay aligned. */
+        margin-left: auto;
+      }
+
+      /* ---------- principal ---------- */
+
+      .hud-main {
+        margin-left: var(--rail-w);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hud-content {
+        width: 100%;
+        max-width: 56rem;
+        padding: 2.5rem 2.5rem 3rem;
+      }
+
+      .intro {
+        padding-bottom: 2rem;
+      }
+
+      .kicker {
+        margin: 0 0 0.75rem;
+        color: var(--muted-foreground);
+        font-size: 0.6875rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .intro h1 {
+        margin: 0;
+        font-size: 2rem;
+        line-height: 1.15;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 0.6em;
+        height: 0.95em;
+        margin-left: 0.35rem;
+        background: var(--accent);
+        vertical-align: -0.08em;
+      }
+
+      .intro .lede {
+        margin: 0.875rem 0 0;
+        max-width: 38rem;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+      }
+
+      .records-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0 0 0.625rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .records-head h2 {
+        margin: 0;
+        color: var(--muted-foreground);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .records-head .count {
+        color: var(--muted-foreground);
+        font-size: 0.6875rem;
+        letter-spacing: 0.12em;
+      }
+
+      .record-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .record {
+        display: grid;
+        grid-template-columns: 7rem minmax(0, 1fr);
+        gap: 1rem;
+        padding: 0.875rem 1rem;
+        margin: 0 -1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .record:hover {
+        background: var(--muted);
+      }
+
+      .record time {
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        padding-top: 0.2rem;
+      }
+
+      .record-head {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.25rem 0.75rem;
+      }
+
+      .record h3 {
+        margin: 0;
+        font-size: 0.9875rem;
+        font-weight: 500;
+        line-height: 1.4;
+        overflow-wrap: break-word;
+      }
+
+      .record h3 a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .record h3 a:hover {
+        color: var(--hover);
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        text-underline-offset: 4px;
+      }
+
+      .record-tags {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 0.5rem;
+        margin: 0;
+        padding: 0;
+        font-size: 0.6875rem;
+      }
+
+      .record-tags a {
+        color: var(--muted-foreground);
+        text-decoration: none;
+        border-bottom: 1px dashed var(--border);
+        padding-bottom: 1px;
+      }
+
+      .record-tags a:hover {
+        color: var(--hover);
+        border-color: var(--hover);
+      }
+
+      .record-desc {
+        margin: 0.375rem 0 0;
+        color: var(--muted-foreground);
+        font-size: 0.8125rem;
+        line-height: 1.55;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* ---------- pie ---------- */
+
+      .hud-footer {
+        margin-top: auto;
+        border-top: 1px solid var(--border);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        padding: 1rem 2.5rem;
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+      }
+
+      .footer-sprite {
+        height: 20px;
+        width: auto;
+      }
+
+      .joke {
+        margin: 0;
+        color: var(--muted-foreground);
+      }
+
+      .joke strong {
+        color: var(--accent);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-size: 0.6875rem;
+      }
+
+      .footer-copy {
+        margin: 0 0 0 auto;
+        white-space: nowrap;
+      }
+
+      /* ---------- responsive ---------- */
+
+      @media (max-width: 880px) {
+        .rail {
+          position: static;
+          width: auto;
+          flex-direction: row;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 0.5rem 1.5rem;
+          padding: 0.75rem 1rem;
+          border-right: 0;
+          border-bottom: 1px solid var(--border);
+          overflow: visible;
+        }
+
+        .rail-title {
+          display: none;
+        }
+
+        .rail-list {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 0.25rem;
+        }
+
+        .rail-list .rail-sprite {
+          display: none;
+        }
+
+        .hud-main {
+          margin-left: 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .bar-inner {
+          padding: 0 1rem;
+        }
+
+        .brand {
+          font-size: 0.9375rem;
+        }
+
+        .status .sep,
+        .status .counter {
+          display: none;
+        }
+
+        .hud-content {
+          padding: 1.75rem 1.25rem 2.5rem;
+        }
+
+        .intro h1 {
+          font-size: 1.625rem;
+        }
+
+        .record {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 0.25rem;
+          padding: 1rem 0.75rem;
+          margin: 0 -0.75rem;
+        }
+
+        .record time {
+          padding-top: 0;
+        }
+
+        .footer-inner {
+          padding: 1rem 1.25rem;
+        }
+
+        .footer-copy {
+          margin-left: 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          transition: none !important;
+          animation: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="hud-bar">
+      <div class="bar-inner">
+        <a class="brand" href="#">
+          <img
+            class="pixel-sprite brand-sprite"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAA2CAYAAAC8yXv8AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjFBRTM5QThEOUIyODExRTk5MTRCRDhBNjRFQTIxRTZGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjFBRTM5QThFOUIyODExRTk5MTRCRDhBNjRFQTIxRTZGIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUFFMzlBOEI5QjI4MTFFOTkxNEJEOEE2NEVBMjFFNkYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUFFMzlBOEM5QjI4MTFFOTkxNEJEOEE2NEVBMjFFNkYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4NRyPnAAAJdklEQVR42uxZ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"
+            alt="Caballero de Guardian Tales saludando"
+            width="44"
+            height="54"
+          />
+          <span>Bastian Marquez Riffo</span>
+        </a>
+        <div class="status">
+          <span class="online">
+            <span class="dot" aria-hidden="true"></span>
+            TODO EN ORDEN, MÁS O MENOS
+          </span>
+          <span class="sep" aria-hidden="true">|</span>
+          <span class="counter">36 posts</span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="rail" aria-label="Secciones">
+      <p class="rail-title">Índice</p>
+      <ol class="rail-list">
+        <li>
+          <a href="#" aria-current="page">
+            <span class="num">01</span>
+            <span class="label">Posts</span>
+            <img
+              class="pixel-sprite rail-sprite"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAApCAYAAACcGcHqAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjFENkJFMTFDOUIyODExRTlBNDkwODI1MzY3NjdBNzg3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjFENkJFMTFEOUIyODExRTlBNDkwODI1MzY3NjdBNzg3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUQ2QkUxMUE5QjI4MTFFOUE0OTA4MjUzNjc2N0E3ODciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUQ2QkUxMUI5QjI4MTFFOUE0OTA4MjUzNjc2N0E3ODciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7PvUUBAAAKiUlEQVR42rRZ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"
+              alt=""
+              width="49"
+              height="41"
+              aria-hidden="true"
+            />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="num">02</span>
+            <span class="label">Noticias</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="num">03</span>
+            <span class="label">Proyectos</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="num">04</span>
+            <span class="label">Tags</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="num">05</span>
+            <span class="label">Sobre mí</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="num">06</span>
+            <span class="label">Buscar</span>
+          </a>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="hud-main">
+      <main id="contenido" class="hud-content">
+        <section class="intro" aria-labelledby="hud-title">
+          <p class="kicker">// blog personal</p>
+          <h1 id="hud-title">
+            IA, Finanzas y Código<span class="cursor" aria-hidden="true"></span>
+          </h1>
+          <p class="lede">
+            Blog de Bastian Marquez Riffo (Tweakers_BAMR) — AI-Driven Finance
+            &amp; Operations Specialist.
+          </p>
+        </section>
+
+        <section class="records" aria-labelledby="records-title">
+          <div class="records-head">
+            <h2 id="records-title">Posts recientes</h2>
+            <span class="count">05 registros</span>
+          </div>
+          <ul class="record-list">
+            <li>
+              <article class="record">
+              <time datetime="2026-10-07">7 Oct, 2026</time>
+              <div>
+                <div class="record-head">
+                  <h3>
+                    <a href="#"
+                      >Open Knowledge Format (OKF) de Google: el estándar de
+                      conocimiento que ordenó mi caos digital</a
+                    >
+                  </h3>
+                  <ul class="record-tags">
+                    <li><a href="#">#ia</a></li>
+                    <li><a href="#">#productividad</a></li>
+                    <li><a href="#">#herramientas</a></li>
+                    <li><a href="#">#metodologias</a></li>
+                  </ul>
+                </div>
+                <p class="record-desc">
+                  Qué es el Open Knowledge Format (OKF) v0.2 de Google, por qué
+                  se usa como estándar al crear un repo, cómo pedirle a un
+                  agente que trabaje con un bundle en GitHub, cómo validar el
+                  frontmatter con Python y cómo preparar el repo con scripts,
+                  plantillas y prompts. Guía técnica y personal, también para
+                  quien no programa.
+                </p>
+              </div>
+              </article>
+            </li>
+            <li>
+              <article class="record">
+              <time datetime="2026-08-28">28 Aug, 2026</time>
+              <div>
+                <div class="record-head">
+                  <h3><a href="#">Hola mundo: IA, finanzas y código</a></h3>
+                  <ul class="record-tags">
+                    <li><a href="#">#intro</a></li>
+                    <li><a href="#">#ia</a></li>
+                    <li><a href="#">#finanzas</a></li>
+                    <li><a href="#">#código</a></li>
+                  </ul>
+                </div>
+                <p class="record-desc">
+                  Por qué arranco este blog y qué vas a encontrar acá:
+                  experimentos con IA, finanzas, proyectos de código y algo de
+                  vida de tanque en WoW.
+                </p>
+              </div>
+              </article>
+            </li>
+            <li>
+              <article class="record">
+              <time datetime="2025-08-10">10 Aug, 2025</time>
+              <div>
+                <div class="record-head">
+                  <h3>
+                    <a href="#"
+                      >Agentes de IA en Finanzas: La Hoja de Ruta Definitiva
+                      para Contadores que Lideran el Cambio</a
+                    >
+                  </h3>
+                  <ul class="record-tags">
+                    <li><a href="#">#ia</a></li>
+                    <li><a href="#">#finanzas</a></li>
+                  </ul>
+                </div>
+                <p class="record-desc">
+                  Plan de acción en 4 fases para implementar agentes de IA en
+                  finanzas: diagnóstico estratégico, piloto con
+                  human-in-the-loop, integración segura y medición continua del
+                  ROI.
+                </p>
+              </div>
+              </article>
+            </li>
+            <li>
+              <article class="record">
+              <time datetime="2025-08-03">3 Aug, 2025</time>
+              <div>
+                <div class="record-head">
+                  <h3>
+                    <a href="#"
+                      >IA, Finanzas y World of Warcraft: Cómo un Videojuego
+                      Forjó mis Habilidades para la Próxima Revolución
+                      Profesional</a
+                    >
+                  </h3>
+                  <ul class="record-tags">
+                    <li><a href="#">#gaming</a></li>
+                    <li><a href="#">#ia</a></li>
+                  </ul>
+                </div>
+                <p class="record-desc">
+                  132 días de progreso, 1011 intentos y un logro Cutting Edge:
+                  cómo World of Warcraft me entrenó en resiliencia, análisis de
+                  datos y colaboración de alto nivel para la era de la IA.
+                </p>
+              </div>
+              </article>
+            </li>
+            <li>
+              <article class="record">
+              <time datetime="2025-07-27">27 Jul, 2025</time>
+              <div>
+                <div class="record-head">
+                  <h3>
+                    <a href="#"
+                      >IA en Finanzas: De la Tarea Obvia a la Estrategia del
+                      Porqué</a
+                    >
+                  </h3>
+                  <ul class="record-tags">
+                    <li><a href="#">#ia</a></li>
+                    <li><a href="#">#finanzas</a></li>
+                  </ul>
+                </div>
+                <p class="record-desc">
+                  La trampa de la 'obviedad' profesional, el Círculo Dorado de
+                  Sinek aplicado a la contabilidad y por qué 2027 puede ser el
+                  punto de inflexión de la IA en las finanzas.
+                </p>
+              </div>
+              </article>
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="hud-footer">
+        <div class="footer-inner">
+          <img
+            class="pixel-sprite footer-sprite"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAnCAYAAACIVoEIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjFFMDcxQzExOUIyODExRTk5QUNGRjE2QjMzNkNEMDQ0IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjFFMDcxQzEyOUIyODExRTk5QUNGRjE2QjMzNkNEMDQ0Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUUwNzFDMEY5QjI4MTFFOTlBQ0ZGMTZCMzM2Q0QwNDQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUUwNzFDMTA5QjI4MTFFOTlBQ0ZGMTZCMzM2Q0QwNDQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7SNaXCAAAIoUlEQVR42qyY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"
+            alt="Caballero de Guardian Tales noqueado después de chocarse con los iconos"
+            width="37"
+            height="39"
+          />
+          <p class="joke">
+            <strong>sin incidencias</strong> · salvo el caballero, que se chocó
+            con los iconos
+          </p>
+          <p class="footer-copy">© 2026 Bastian Marquez Riffo</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

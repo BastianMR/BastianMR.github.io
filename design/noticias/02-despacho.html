@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Noticias — 02 · Despacho</title>
+    <style>
+      :root {
+        --background: #0d0d0d;
+        --foreground: #ffffff;
+        --accent: #00ff85;
+        --hover: #ff0099;
+        --muted: #1a1a1a;
+        --muted-foreground: #9ca3af;
+        --border: #262626;
+        --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+          "Liberation Mono", monospace;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--foreground);
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .app {
+        max-width: 52rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      a:focus-visible {
+        outline: 2px dashed var(--accent);
+        outline-offset: 2px;
+      }
+      .skip {
+        position: absolute;
+        left: -9999px;
+      }
+      .skip:focus {
+        left: 1rem;
+        top: 1rem;
+        z-index: 9;
+        background: var(--background);
+        padding: 0.5rem;
+        color: var(--accent);
+      }
+      header.hd {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        color: var(--foreground);
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+      }
+      .nav a {
+        color: var(--foreground);
+        text-decoration: none;
+        font-weight: 500;
+        padding-bottom: 2px;
+      }
+      .nav a:hover {
+        color: var(--hover);
+      }
+      .nav a[aria-current="page"] {
+        border-bottom: 2px solid var(--accent);
+      }
+      .topline {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        border-bottom: 1px solid var(--border);
+        padding: 1.75rem 0 0.75rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        margin: 0;
+      }
+      .lede {
+        font-style: italic;
+        color: var(--muted-foreground);
+        font-size: 0.875rem;
+        margin: 0;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 1.25rem;
+        margin: 0;
+        padding: 0.75rem 0;
+        list-style: none;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.8125rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .chips a {
+        color: var(--muted-foreground);
+        text-decoration: none;
+      }
+      .chips a:hover {
+        color: var(--hover);
+      }
+      .chips a.on {
+        color: var(--accent);
+      }
+      .chips .rss {
+        margin-left: auto;
+        color: var(--accent);
+      }
+      .day {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+        margin: 2rem 0 0.75rem;
+      }
+      .day::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .wire {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .wire li {
+        display: grid;
+        grid-template-columns: 5.25rem 1fr;
+        gap: 0 1.25rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .wire li:hover {
+        background: var(--muted);
+      }
+      .stamp {
+        font-size: 0.75rem;
+        line-height: 1.5;
+        color: var(--muted-foreground);
+      }
+      .stamp .cat {
+        display: block;
+        color: var(--accent);
+        letter-spacing: 0.06em;
+      }
+      .wire h2 {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.45;
+        margin: 0;
+      }
+      .wire h2 a {
+        color: var(--foreground);
+        text-decoration: none;
+      }
+      .wire h2 a:hover {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        text-underline-offset: 3px;
+      }
+      .wire .src {
+        color: var(--muted-foreground);
+        font-size: 0.8125rem;
+        margin: 0.125rem 0 0;
+      }
+      .wire .brief {
+        color: var(--muted-foreground);
+        font-size: 0.8125rem;
+        margin: 0.25rem 0 0;
+      }
+      .pager {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8125rem;
+        color: var(--muted-foreground);
+        padding: 1.5rem 0 2.5rem;
+      }
+      .pager a {
+        color: var(--foreground);
+        text-decoration: none;
+      }
+      .pager a:hover {
+        color: var(--hover);
+      }
+      @media (max-width: 34rem) {
+        .wire li {
+          grid-template-columns: 1fr;
+          gap: 0.25rem;
+        }
+        .stamp .cat {
+          display: inline;
+          margin-left: 0.5rem;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Saltar al contenido</a>
+    <header class="hd app">
+      <a class="brand" href="#">
+        <svg viewBox="0 0 8 8" width="22" height="22" aria-hidden="true">
+          <g fill="#00ff85">
+            <rect x="2" y="0" width="4" height="1" />
+            <rect x="1" y="1" width="6" height="1" />
+            <rect x="1" y="2" width="2" height="2" />
+            <rect x="4" y="2" width="2" height="2" />
+            <rect x="2" y="4" width="4" height="1" />
+            <rect x="1" y="5" width="6" height="2" />
+          </g>
+        </svg>
+        Bastian Marquez Riffo
+      </a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#">Posts</a>
+        <a href="#" aria-current="page">Noticias</a>
+        <a href="#">Tags</a>
+        <a href="#">Sobre mí</a>
+        <a href="#" aria-label="Buscar">⌕</a>
+      </nav>
+    </header>
+
+    <main class="app" id="main">
+      <div class="topline">
+        <h1>DESPACHO · NOTICIAS</h1>
+        <p class="lede">Tecnología e IA, con fuente. Actualizado 18 Feb, 2026 · 09:00</p>
+      </div>
+
+      <ul class="chips">
+        <li><a class="on" href="#">Todas</a></li>
+        <li><a href="#">IA</a></li>
+        <li><a href="#">Software</a></li>
+        <li><a href="#">Hardware</a></li>
+        <li><a href="#">Negocios</a></li>
+        <li><a href="#">Ciencia</a></li>
+        <li><a class="rss" href="#">◉ RSS</a></li>
+      </ul>
+
+      <p class="day">18 Feb, 2026</p>
+      <ul class="wire">
+        <li>
+          <p class="stamp">09:00 <span class="cat">IA</span></p>
+          <div>
+            <h2><a href="#">OpenAI abre su modelo de razonamiento con ventana de un millón de tokens</a></h2>
+            <p class="src">OpenAI · acceso por API para cuentas de pago</p>
+            <p class="brief">Los límites por minuto cambian y el costo por token de salida baja.</p>
+          </div>
+        </li>
+        <li>
+          <p class="stamp">07:40 <span class="cat">IA</span></p>
+          <div>
+            <h2><a href="#">Bruselas publica la guía técnica del AI Act para modelos de propósito general</a></h2>
+            <p class="src">Comisión Europea</p>
+            <p class="brief">Fija cómo se documentan los datos de entrenamiento y los riesgos sistémicos.</p>
+          </div>
+        </li>
+      </ul>
+
+      <p class="day">17 Feb, 2026</p>
+      <ul class="wire">
+        <li>
+          <p class="stamp">18:15 <span class="cat">NEG</span></p>
+          <div>
+            <h2><a href="#">Anthropic y Google amplían su acuerdo de cómputo con TPUs de séptima generación</a></h2>
+            <p class="src">Comunicado de ambas compañías · contrato hasta 2028</p>
+          </div>
+        </li>
+        <li>
+          <p class="stamp">14:05 <span class="cat">HW</span></p>
+          <div>
+            <h2><a href="#">La inferencia ya consume más GPU que el entrenamiento en los grandes proveedores</a></h2>
+            <p class="src">SemiAnalysis</p>
+            <p class="brief">La mezcla de compras se mueve hacia memoria por acelerador, no hacia interconexión.</p>
+          </div>
+        </li>
+        <li>
+          <p class="stamp">11:30 <span class="cat">SW</span></p>
+          <div>
+            <h2><a href="#">Un paquete npm comprometido expone credenciales en 4.000 repositorios privados</a></h2>
+            <p class="src">BleepingComputer</p>
+            <p class="brief">Once horas de exposición; los pipelines sin bloqueo de versiones fueron los más golpeados.</p>
+          </div>
+        </li>
+      </ul>
+
+      <p class="day">15 Feb, 2026</p>
+      <ul class="wire">
+        <li>
+          <p class="stamp">16:20 <span class="cat">CIEN</span></p>
+          <div>
+            <h2><a href="#">DeepMind reporta un modelo que resuelve química computacional en minutos</a></h2>
+            <p class="src">DeepMind · preprint</p>
+            <p class="brief">Dos órdenes de magnitud frente a métodos de malla, con validación experimental pendiente.</p>
+          </div>
+        </li>
+      </ul>
+
+      <nav class="pager" aria-label="Paginación">
+        <span>← Anterior</span>
+        <span>1 / 4</span>
+        <a href="#">Siguiente →</a>
+      </nav>
+    </main>
+  </body>
+</html>

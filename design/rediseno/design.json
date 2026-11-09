@@ -1,0 +1,27 @@
+{
+  "title": "Rediseño del blog",
+  "brief": "Rediseño de bastianmr.github.io que mantiene los tres sprites pixel de Guardian Tales como parte de la identidad; los artboards son la página de inicio.",
+  "artboards": [
+    {
+      "file": "01-terminal-editorial.html",
+      "title": "Terminal editorial",
+      "tradeoff": "El más seguro: mejora la jerarquía sin cambiar la identidad.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "02-consola-de-guerra.html",
+      "title": "Consola de guerra",
+      "tradeoff": "El más distintivo y denso; corre el riesgo de leerse como una herramienta de desarrollo en lugar de un blog personal.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "03-papel-neon.html",
+      "title": "Papel neón",
+      "tradeoff": "La mejor comodidad de lectura, pero exige cambiar los tokens de src/styles/theme.css y abandonar la identidad totalmente oscura.",
+      "width": 1440,
+      "height": 900
+    }
+  ]
+}

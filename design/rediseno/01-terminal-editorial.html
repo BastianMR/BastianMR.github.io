@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Rediseño 01 — Terminal editorial · Bastian Marquez Riffo</title>
+    <style>
+      :root {
+        --background: #0d0d0d;
+        --foreground: #ffffff;
+        --accent: #00ff85;
+        --accent-foreground: #0d0d0d;
+        --hover: #ff0099;
+        --muted: #1a1a1a;
+        --muted-foreground: #9ca3af;
+        --border: #262626;
+        --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+          "Liberation Mono", monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--background);
+      }
+
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--foreground);
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px dashed var(--accent);
+        outline-offset: 2px;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        z-index: 10;
+        background: var(--background);
+        color: var(--accent);
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--border);
+        text-decoration: none;
+      }
+
+      .skip-link:focus {
+        left: 1rem;
+        top: 1rem;
+      }
+
+      .shell {
+        width: 100%;
+        max-width: 62rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .pixel-sprite {
+        image-rendering: pixelated;
+        display: block;
+        flex: none;
+      }
+
+      /* ---------- header ---------- */
+
+      .site-header {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding-top: 1.125rem;
+        padding-bottom: 1.125rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+
+      .brand-sprite {
+        height: 22px;
+        width: auto;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 1.75rem;
+        font-size: 0.9375rem;
+        font-weight: 500;
+      }
+
+      .nav a {
+        text-decoration: none;
+        padding-bottom: 2px;
+      }
+
+      .nav a:hover {
+        color: var(--hover);
+      }
+
+      /* ---------- hero ---------- */
+
+      .hero {
+        border-bottom: 1px solid var(--border);
+        padding: 3.25rem 0 2.75rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 20rem;
+        gap: 3.5rem;
+        align-items: start;
+      }
+
+      .eyebrow {
+        margin: 0 0 1rem;
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        margin: 0 0 1rem;
+        font-size: 2.5rem;
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+      }
+
+      .lede {
+        margin: 0;
+        max-width: 36rem;
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+
+      .lede em {
+        color: var(--muted-foreground);
+        font-style: normal;
+      }
+
+      .rss-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+        color: var(--accent);
+        font-size: 0.875rem;
+        text-decoration: none;
+        border-bottom: 2px dashed var(--border);
+        padding-bottom: 2px;
+      }
+
+      .rss-link:hover {
+        color: var(--hover);
+        border-color: var(--hover);
+      }
+
+      .icon {
+        flex: none;
+      }
+
+      .now {
+        border: 1px solid var(--border);
+        background: var(--muted);
+        padding: 1.25rem 1.25rem 1.375rem;
+      }
+
+      .now-label {
+        margin: 0 0 0.875rem;
+        color: var(--accent);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .now h2 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      .now h2 a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .now h2 a:hover {
+        color: var(--hover);
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        text-underline-offset: 4px;
+      }
+
+      .now-date {
+        margin: 0.5rem 0 0;
+        color: var(--muted-foreground);
+        font-size: 0.8125rem;
+      }
+
+      .now-desc {
+        margin: 0.75rem 0 0;
+        color: var(--foreground);
+        font-size: 0.875rem;
+        line-height: 1.55;
+      }
+
+      .now-more {
+        display: inline-block;
+        margin-top: 0.875rem;
+        color: var(--foreground);
+        font-size: 0.875rem;
+        text-decoration: none;
+        border-bottom: 2px dashed var(--border);
+        padding-bottom: 1px;
+      }
+
+      .now-more:hover {
+        color: var(--hover);
+        border-color: var(--hover);
+      }
+
+      /* ---------- body ---------- */
+
+      .body-grid {
+        display: grid;
+        grid-template-columns: 34rem 16rem;
+        justify-content: space-between;
+        align-items: start;
+        gap: 3rem;
+        padding-top: 2.75rem;
+        padding-bottom: 3rem;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+      }
+
+      .section-head span {
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+      }
+
+      .post-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .post-list li {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .post-list h3 {
+        margin: 0;
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.4;
+        overflow-wrap: break-word;
+      }
+
+      .post-list h3 a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .post-list h3 a:hover {
+        color: var(--hover);
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        text-underline-offset: 4px;
+      }
+
+      .meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0.375rem 0 0;
+        color: var(--muted-foreground);
+        font-size: 0.875rem;
+      }
+
+      .desc {
+        margin: 0.5rem 0 0;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+      }
+
+      .all-posts {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-top: 1.5rem;
+      }
+
+      .all-posts a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--foreground);
+        font-weight: 500;
+        text-decoration: none;
+        border-bottom: 2px dashed var(--border);
+        padding-bottom: 2px;
+      }
+
+      .all-posts a:hover {
+        color: var(--hover);
+        border-color: var(--hover);
+      }
+
+      .cta-sprite {
+        height: 40px;
+        width: auto;
+      }
+
+      /* ---------- rail ---------- */
+
+      .rail {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+        font-size: 0.875rem;
+      }
+
+      .rail section + section {
+        border-top: 1px solid var(--border);
+        padding-top: 1.5rem;
+      }
+
+      .rail h2 {
+        margin: 0 0 0.875rem;
+        color: var(--muted-foreground);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .tag-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.625rem 0.875rem;
+      }
+
+      .tag-list a {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.25rem;
+        color: var(--foreground);
+        text-decoration: none;
+        border-bottom: 2px dashed var(--foreground);
+        padding-bottom: 1px;
+      }
+
+      .tag-list a:hover {
+        color: var(--hover);
+        border-color: var(--hover);
+      }
+
+      .tag-list .hash {
+        color: var(--accent);
+      }
+
+      .tag-list .count {
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+      }
+
+      .about p {
+        margin: 0 0 0.75rem;
+        color: var(--foreground);
+        line-height: 1.6;
+      }
+
+      .about-link {
+        color: var(--foreground);
+        text-decoration: none;
+        border-bottom: 2px dashed var(--border);
+        padding-bottom: 1px;
+      }
+
+      .about-link:hover {
+        color: var(--hover);
+        border-color: var(--hover);
+      }
+
+      /* ---------- footer ---------- */
+
+      .site-footer {
+        border-top: 1px solid var(--border);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        font-size: 0.8125rem;
+        color: var(--muted-foreground);
+      }
+
+      .footer-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .footer-sprite {
+        height: 20px;
+        width: auto;
+      }
+
+      .socials {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.375rem 1.125rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      .socials a {
+        text-decoration: none;
+      }
+
+      .socials a:hover {
+        color: var(--hover);
+      }
+
+      /* ---------- responsive ---------- */
+
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .body-grid {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 2.5rem;
+        }
+
+        .rail {
+          border-top: 1px solid var(--border);
+          padding-top: 1.75rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          padding: 0 1.25rem;
+        }
+
+        .header-inner {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.75rem;
+        }
+
+        .nav {
+          flex-wrap: wrap;
+          gap: 1rem;
+          font-size: 0.875rem;
+        }
+
+        .hero {
+          padding: 2.25rem 0 2rem;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          transition: none !important;
+          animation: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="#" aria-label="Bastian Marquez Riffo — Inicio">
+          <img
+            class="pixel-sprite brand-sprite"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAA2CAYAAAC8yXv8AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjFBRTM5QThEOUIyODExRTk5MTRCRDhBNjRFQTIxRTZGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjFBRTM5QThFOUIyODExRTk5MTRCRDhBNjRFQTIxRTZGIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUFFMzlBOEI5QjI4MTFFOTkxNEJEOEE2NEVBMjFFNkYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUFFMzlBOEM5QjI4MTFFOTkxNEJEOEE2NEVBMjFFNkYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4NRyPnAAAJdklEQVR42uxZ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"
+            alt="Caballero de Guardian Tales saludando"
+            width="44"
+            height="54"
+          />
+          <span>Bastian Marquez Riffo</span>
+        </a>
+        <nav class="nav" aria-label="Principal">
+          <a href="#">Posts</a>
+          <a href="#">Noticias</a>
+          <a href="#">Tags</a>
+          <a href="#">Sobre mí</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Tweakers_BAMR · blog personal</p>
+            <h1 id="hero-title">IA, Finanzas y Código</h1>
+            <p class="lede">
+              Blog de <strong>Bastian Marquez Riffo</strong>
+              <em>(Tweakers_BAMR)</em> — AI-Driven Finance &amp; Operations
+              Specialist. Experimentos con IA, finanzas, proyectos de código y
+              lecciones de la vida real.
+            </p>
+            <a class="rss-link" href="#">
+              <svg
+                class="icon"
+                viewBox="0 0 20 20"
+                width="16"
+                height="16"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="4" cy="16" r="2" fill="currentColor" />
+                <path
+                  d="M2 8a10 10 0 0 1 10 10M2 2a16 16 0 0 1 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+              <span>Suscribite al RSS</span>
+            </a>
+          </div>
+
+          <aside class="now" aria-labelledby="now-title">
+            <p class="now-label" id="now-title">Ahora</p>
+            <h2>
+              <a href="#"
+                >Open Knowledge Format (OKF) de Google: el estándar de
+                conocimiento que ordenó mi caos digital</a
+              >
+            </h2>
+            <p class="now-date">
+              <time datetime="2026-10-07">7 Oct, 2026</time>
+            </p>
+            <p class="now-desc">
+              Qué es el Open Knowledge Format (OKF) v0.2 de Google, por qué se
+              usa como estándar al crear un repo, cómo pedirle a un agente que
+              trabaje con un bundle en GitHub, cómo validar el frontmatter con
+              Python y cómo preparar el repo con scripts, plantillas y prompts.
+              Guía técnica y personal, también para quien no programa.
+            </p>
+            <a class="now-more" href="#"
+              >Leer el post <span aria-hidden="true">→</span></a
+            >
+          </aside>
+        </div>
+      </section>
+
+      <div class="shell body-grid">
+        <section class="posts" aria-labelledby="posts-title">
+          <div class="section-head">
+            <h2 id="posts-title">Posts recientes</h2>
+            <span aria-hidden="true">04</span>
+          </div>
+          <ul class="post-list">
+            <li>
+              <article>
+                <h3><a href="#">Hola mundo: IA, finanzas y código</a></h3>
+                <p class="meta">
+                  <svg
+                    class="icon"
+                    viewBox="0 0 16 16"
+                    width="12"
+                    height="12"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <rect
+                      x="1.5"
+                      y="3"
+                      width="13"
+                      height="11.5"
+                      rx="1"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                    />
+                    <path
+                      d="M1.5 6.5h13M5 1.5v3M11 1.5v3"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                    />
+                  </svg>
+                  <time datetime="2026-08-28">28 Aug, 2026</time>
+                </p>
+                <p class="desc">
+                  Por qué arranco este blog y qué vas a encontrar acá:
+                  experimentos con IA, finanzas, proyectos de código y algo de
+                  vida de tanque en WoW.
+                </p>
+              </article>
+            </li>
+            <li>
+              <article>
+                <h3>
+                  <a href="#"
+                    >Agentes de IA en Finanzas: La Hoja de Ruta Definitiva para
+                    Contadores que Lideran el Cambio</a
+                  >
+                </h3>
+                <p class="meta">
+                  <svg
+                    class="icon"
+                    viewBox="0 0 16 16"
+                    width="12"
+                    height="12"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <rect
+                      x="1.5"
+                      y="3"
+                      width="13"
+                      height="11.5"
+                      rx="1"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                    />
+                    <path
+                      d="M1.5 6.5h13M5 1.5v3M11 1.5v3"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                    />
+                  </svg>
+                  <time datetime="2025-08-10">10 Aug, 2025</time>
+                </p>
+                <p class="desc">
+                  Plan de acción en 4 fases para implementar agentes de IA en
+                  finanzas: diagnóstico estratégico, piloto con
+                  human-in-the-loop, integración segura y medición continua del
+                  ROI.
+                </p>
+              </article>
+            </li>
+            <li>
+              <article>
+                <h3>
+                  <a href="#"
+                    >IA, Finanzas y World of Warcraft: Cómo un Videojuego Forjó
+                    mis Habilidades para la Próxima Revolución Profesional</a
+                  >
+                </h3>
+                <p class="meta">
+                  <svg
+                    class="icon"
+                    viewBox="0 0 16 16"
+                    width="12"
+                    height="12"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <rect
+                      x="1.5"
+                      y="3"
+                      width="13"
+                      height="11.5"
+                      rx="1"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                    />
+                    <path
+                      d="M1.5 6.5h13M5 1.5v3M11 1.5v3"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                    />
+                  </svg>
+                  <time datetime="2025-08-03">3 Aug, 2025</time>
+                </p>
+                <p class="desc">
+                  132 días de progreso, 1011 intentos y un logro Cutting Edge:
+                  cómo World of Warcraft me entrenó en resiliencia, análisis de
+                  datos y colaboración de alto nivel para la era de la IA.
+                </p>
+              </article>
+            </li>
+            <li>
+              <article>
+                <h3>
+                  <a href="#"
+                    >IA en Finanzas: De la Tarea Obvia a la Estrategia del
+                    Porqué</a
+                  >
+                </h3>
+                <p class="meta">
+                  <svg
+                    class="icon"
+                    viewBox="0 0 16 16"
+                    width="12"
+                    height="12"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <rect
+                      x="1.5"
+                      y="3"
+                      width="13"
+                      height="11.5"
+                      rx="1"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                    />
+                    <path
+                      d="M1.5 6.5h13M5 1.5v3M11 1.5v3"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                    />
+                  </svg>
+                  <time datetime="2025-07-27">27 Jul, 2025</time>
+                </p>
+                <p class="desc">
+                  La trampa de la 'obviedad' profesional, el Círculo Dorado de
+                  Sinek aplicado a la contabilidad y por qué 2027 puede ser el
+                  punto de inflexión de la IA en las finanzas.
+                </p>
+              </article>
+            </li>
+          </ul>
+
+          <div class="all-posts">
+            <a href="#">Todos los posts <span aria-hidden="true">→</span></a>
+            <img
+              class="pixel-sprite cta-sprite"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAApCAYAAACcGcHqAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjFENkJFMTFDOUIyODExRTlBNDkwODI1MzY3NjdBNzg3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjFENkJFMTFEOUIyODExRTlBNDkwODI1MzY3NjdBNzg3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUQ2QkUxMUE5QjI4MTFFOUE0OTA4MjUzNjc2N0E3ODciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUQ2QkUxMUI5QjI4MTFFOUE0OTA4MjUzNjc2N0E3ODciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7PvUUBAAAKiUlEQVR42rRZ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"
+              alt="Caballero de Guardian Tales corriendo con la espada levantada"
+              width="49"
+              height="41"
+            />
+          </div>
+        </section>
+
+        <aside class="rail" aria-label="Explorar el blog">
+          <section aria-labelledby="tags-title">
+            <h2 id="tags-title">Tags</h2>
+            <ul class="tag-list">
+              <li>
+                <a href="#"><span class="hash">#</span>ia <span class="count">15</span></a>
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="hash">#</span>finanzas
+                  <span class="count">11</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="hash">#</span>carrera
+                  <span class="count">8</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="hash">#</span>contabilidad
+                  <span class="count">7</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="hash">#</span>productividad
+                  <span class="count">7</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="hash">#</span>metodologias
+                  <span class="count">5</span></a
+                >
+              </li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="rss-title">
+            <h2 id="rss-title">Sindicación</h2>
+            <a class="rss-link" href="#">
+              <svg
+                class="icon"
+                viewBox="0 0 20 20"
+                width="16"
+                height="16"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="4" cy="16" r="2" fill="currentColor" />
+                <path
+                  d="M2 8a10 10 0 0 1 10 10M2 2a16 16 0 0 1 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+              <span>RSS</span>
+            </a>
+          </section>
+
+          <section class="about" aria-labelledby="about-title">
+            <h2 id="about-title">Sobre mí</h2>
+            <p>
+              Contador auditor. Escribo sobre IA aplicada a finanzas,
+              automatización y gestión del conocimiento.
+            </p>
+            <a class="about-link" href="#">Quién está detrás →</a>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <div class="footer-left">
+          <img
+            class="pixel-sprite footer-sprite"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAnCAYAAACIVoEIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjFFMDcxQzExOUIyODExRTk5QUNGRjE2QjMzNkNEMDQ0IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjFFMDcxQzEyOUIyODExRTk5QUNGRjE2QjMzNkNEMDQ0Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUUwNzFDMEY5QjI4MTFFOTlBQ0ZGMTZCMzM2Q0QwNDQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUUwNzFDMTA5QjI4MTFFOTlBQ0ZGMTZCMzM2Q0QwNDQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7SNaXCAAAIoUlEQVR42qyY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"
+            alt="Caballero de Guardian Tales noqueado después de chocarse con los iconos"
+            width="37"
+            height="39"
+          />
+          <span
+            >Copyright © 2026 Bastian Marquez Riffo · Todos los derechos
+            reservados.</span
+          >
+        </div>
+        <ul class="socials">
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">X</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Platzi</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

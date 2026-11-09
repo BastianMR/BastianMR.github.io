@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "chosen": "02-consola-de-guerra.html",
+  "handoffs": {
+    "02-consola-de-guerra.html": {
+      "status": "implemented",
+      "queued": false,
+      "sentAt": "2026-11-09T17:27:14.364Z",
+      "startedAt": "2026-11-09T17:27:29.634Z",
+      "implementedAt": "2026-11-09T17:30:48.029Z",
+      "note": "Artboard y sitio sincronizados: riel de 6 ítems, alineación en columna y línea base, y la frase de estado del artboard ya es la de producción.",
+      "previewUrl": "http://localhost:4321/"
+    }
+  }
+}
