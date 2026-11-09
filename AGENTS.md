@@ -9,6 +9,14 @@ Personal blog built with AstroPaper, published at <https://bastianmr.github.io>.
 - Never include private or work data of any kind: identifiers, monetary amounts, financial or accounting records, client or company names, internal decisions, operational procedures, or infrastructure details.
 - When structuring or planning content for this repo, draw **only** from personal sources (this blog, personal notes at a high level, and public references).
 
+## Before publishing content
+
+If `odd/guides/publishing.md` exists in this checkout, read it before writing
+anything under `src/content/`: it holds the per-section frontmatter contract,
+copy-paste templates, the visibility rules (`draft`, scheduled posts, the private
+`idea` status) and the commands that prove an entry is really published.
+`src/content.config.ts` stays the source of truth.
+
 ## Writing conventions
 
 - Site language is Spanish (`es`). Post bodies are written in Spanish.
