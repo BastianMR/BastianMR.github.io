@@ -5,6 +5,7 @@ export default {
     home: "Home",
     posts: "Posts",
     news: "News",
+    projects: "Projects",
     tags: "Tags",
     about: "About",
     archives: "Archives",
@@ -46,6 +47,19 @@ export default {
     sourceLabel: "Source",
     categoryLabel: "Category",
   },
+  projects: {
+    status: {
+      idea: "Idea",
+      "en-curso": "In progress",
+      pausado: "Paused",
+      terminado: "Shipped",
+      abandonado: "Abandoned",
+    },
+    stackLabel: "Stack",
+    repoLabel: "Repository",
+    demoLabel: "Demo",
+    empty: "No projects published yet.",
+  },
   footer: {
     copyright: "Copyright",
     allRightsReserved: "All rights reserved.",
@@ -66,6 +80,10 @@ export default {
     newsDesc: "Technology and AI news, each one with its source.",
     newsCategoryTitle: "Category",
     newsCategoryDesc: "All the news in the category",
+
+    projectsTitle: "Projects",
+    projectsDesc:
+      "What I'm working on, grouped by state: what is alive comes first.",
 
     archivesTitle: "Archives",
     archivesDesc: "All the articles I've archived.",

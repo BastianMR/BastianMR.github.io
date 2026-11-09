@@ -5,6 +5,22 @@ import config from "@/config";
 
 export const BLOG_PATH = "src/content/posts";
 export const NEWS_PATH = "src/content/news";
+export const PROJECTS_PATH = "src/content/projects";
+
+/**
+ * Project states, in reading order: the listing groups by this sequence, so
+ * what is alive comes first and abandoned work sinks to the bottom.
+ * `idea` is a private backlog: rendered in dev, never in a production build.
+ */
+export const PROJECT_STATUSES = [
+  "en-curso",
+  "pausado",
+  "terminado",
+  "abandonado",
+  "idea",
+] as const;
+
+export type ProjectStatus = (typeof PROJECT_STATUSES)[number];
 
 /**
  * Fixed news categories. They are the coarse grouping of `/noticias/` and must
@@ -76,6 +92,21 @@ const news = defineCollection({
     }),
 });
 
+const projects = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${PROJECTS_PATH}` }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    status: z.enum(PROJECT_STATUSES),
+    stack: z.array(z.string()).default([]),
+    repo: z.url().optional(),
+    demo: z.url().optional(),
+    startedAt: z.date().optional(),
+    updatedAt: z.date().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
 const pages = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/pages" }),
   schema: z.object({
@@ -86,4 +117,4 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { posts, pages, news };
+export const collections = { posts, pages, news, projects };

@@ -5,6 +5,7 @@ export default {
     home: "Inicio",
     posts: "Posts",
     news: "Noticias",
+    projects: "Proyectos",
     tags: "Tags",
     about: "Sobre mí",
     archives: "Archivo",
@@ -46,6 +47,19 @@ export default {
     sourceLabel: "Fuente",
     categoryLabel: "Categoría",
   },
+  projects: {
+    status: {
+      idea: "Idea",
+      "en-curso": "En curso",
+      pausado: "Pausado",
+      terminado: "Terminado",
+      abandonado: "Abandonado",
+    },
+    stackLabel: "Stack",
+    repoLabel: "Repositorio",
+    demoLabel: "Demo",
+    empty: "Todavía no hay proyectos publicados.",
+  },
   footer: {
     copyright: "Copyright",
     allRightsReserved: "Todos los derechos reservados.",
@@ -67,6 +81,10 @@ export default {
       "Noticias de tecnología e inteligencia artificial, cada una con su fuente.",
     newsCategoryTitle: "Categoría",
     newsCategoryDesc: "Todas las noticias de la categoría",
+
+    projectsTitle: "Proyectos",
+    projectsDesc:
+      "En qué estoy trabajando, agrupado por estado: lo que está vivo primero.",
 
     archivesTitle: "Archivo",
     archivesDesc: "Todos los artículos archivados.",

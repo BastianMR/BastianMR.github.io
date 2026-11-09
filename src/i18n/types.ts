@@ -3,6 +3,7 @@ export interface UIStrings {
     home: string;
     posts: string;
     news: string;
+    projects: string;
     tags: string;
     about: string;
     archives: string;
@@ -44,6 +45,19 @@ export interface UIStrings {
     sourceLabel: string;
     categoryLabel: string;
   };
+  projects: {
+    status: {
+      idea: string;
+      "en-curso": string;
+      pausado: string;
+      terminado: string;
+      abandonado: string;
+    };
+    stackLabel: string;
+    repoLabel: string;
+    demoLabel: string;
+    empty: string;
+  };
   footer: {
     copyright: string;
     allRightsReserved: string;
@@ -64,6 +78,9 @@ export interface UIStrings {
     newsDesc: string;
     newsCategoryTitle: string;
     newsCategoryDesc: string;
+
+    projectsTitle: string;
+    projectsDesc: string;
 
     archivesTitle: string;
     archivesDesc: string;
