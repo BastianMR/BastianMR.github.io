@@ -12,6 +12,11 @@ dayjs.extend(timezone);
 type Props = {
   class?: string;
   size?: "sm" | "lg";
+  /**
+   * `plain` renders the bare `<time>` element (for record rows, where the date
+   * is a gutter cell) instead of the icon + label line.
+   */
+  variant?: "default" | "plain";
   pubDatetime: string | Date;
   timezone?: string;
   modDatetime?: string | Date | null;
@@ -21,6 +26,7 @@ const {
   pubDatetime,
   modDatetime,
   size = "sm",
+  variant = "default",
   class: className = "",
   timezone: postTimezone,
 } = Astro.props;
@@ -36,26 +42,36 @@ const datetime = dayjs(isModified ? modDatetime : pubDatetime).tz(
 const date = datetime.format("D MMM, YYYY");
 ---
 
-<div
-  class:list={["text-muted-foreground flex items-center gap-x-2", className]}
->
-  <IconCalendar
-    class:list={[
-      "inline-block size-6 min-w-5.5",
-      { "scale-90": size === "sm" },
-    ]}
-  />
-  {
-    isModified && (
-      <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>
-        {t.post.updatedAt}:
-      </span>
-    )
-  }
-  <time
-    class:list={["text-sm", { "sm:text-base": size === "lg" }]}
-    datetime={datetime.toISOString()}
-  >
-    {date}
-  </time>
-</div>
+{
+  variant === "plain" ? (
+    <time class:list={["block", className]} datetime={datetime.toISOString()}>
+      {isModified && <span class="sr-only">{t.post.updatedAt}: </span>}
+      {date}
+    </time>
+  ) : (
+    <div
+      class:list={[
+        "text-muted-foreground flex items-center gap-x-2",
+        className,
+      ]}
+    >
+      <IconCalendar
+        class:list={[
+          "inline-block size-6 min-w-5.5",
+          { "scale-90": size === "sm" },
+        ]}
+      />
+      {isModified && (
+        <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>
+          {t.post.updatedAt}:
+        </span>
+      )}
+      <time
+        class:list={["text-sm", { "sm:text-base": size === "lg" }]}
+        datetime={datetime.toISOString()}
+      >
+        {date}
+      </time>
+    </div>
+  )
+}

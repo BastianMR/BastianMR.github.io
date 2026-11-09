@@ -1,8 +1,11 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { getEntryUrl } from "@/utils/getEntryPaths";
 import { toTransitionName } from "@/utils/toTransitionName";
+import { slugifyStr } from "@/utils/slugify";
 import type { ContentEntry } from "@/utils/content";
 import Datetime from "./Datetime.astro";
+import config from "@/config";
 
 type Props = {
   variant?: "h2" | "h3";
@@ -10,22 +13,65 @@ type Props = {
 
 const { variant: Heading = "h2", collection, id, data, filePath } = Astro.props;
 
-const { title, description, pubDatetime, modDatetime, timezone } = data;
+const {
+  title,
+  description,
+  pubDatetime,
+  modDatetime,
+  timezone,
+  tags = [],
+} = data;
+
+const locale = Astro.currentLocale ?? config.site.lang;
 ---
 
-<li class="my-6">
-  <a
-    href={getEntryUrl(collection, id, filePath, Astro.currentLocale)}
-    class:list={[
-      "text-accent inline-block text-lg font-medium",
-      "decoration-dashed underline-offset-4 hover:underline",
-      "focus-visible:no-underline focus-visible:underline-offset-0",
-    ]}
-  >
-    <Heading transition:name={toTransitionName(id)}>
-      {title}
-    </Heading>
-  </a>
-  <Datetime {pubDatetime} {modDatetime} {timezone} />
-  <p>{description}</p>
+<li
+  class="border-border hover:bg-muted -mx-4 grid grid-cols-1 gap-x-4 gap-y-1 border-b px-4 py-3.5 transition-colors min-[901px]:grid-cols-[7rem_minmax(0,1fr)]"
+>
+  <Datetime
+    variant="plain"
+    {pubDatetime}
+    {modDatetime}
+    {timezone}
+    class="text-muted-foreground text-xs tracking-[0.04em] whitespace-nowrap min-[901px]:pt-0.5"
+  />
+  <div class="min-w-0">
+    <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+      <a
+        href={getEntryUrl(collection, id, filePath, locale)}
+        class="text-accent hover:text-hover inline-block text-[0.9875rem] leading-[1.4] font-medium break-words decoration-dashed underline-offset-4 hover:underline focus-visible:no-underline"
+      >
+        <Heading transition:name={toTransitionName(id)}>
+          {title}
+        </Heading>
+      </a>
+      {
+        tags.length > 0 && (
+          <ul class="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[0.6875rem]">
+            {tags.map(tag => (
+              <li>
+                <a
+                  href={getRelativeLocaleUrl(
+                    locale,
+                    `tags/${slugifyStr(tag)}/`
+                  )}
+                  class="text-muted-foreground border-border hover:text-hover hover:border-hover border-b border-dashed pb-px"
+                >
+                  {"#"}
+                  {tag}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+    {
+      description && (
+        <p class="text-muted-foreground mt-1.5 line-clamp-1 text-[0.8125rem] leading-snug">
+          {description}
+        </p>
+      )
+    }
+  </div>
 </li>

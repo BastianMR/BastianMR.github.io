@@ -41,7 +41,7 @@ const rssPath = `${import.meta.env.BASE_URL.replace(/\/?$/, "/")}noticias/rss.xm
   <Main pageTitle={t.pages.newsTitle} pageDesc={t.pages.newsDesc}>
     {
       page.currentPage === 1 && (
-        <div class="mb-8 flex flex-wrap items-center gap-x-5 gap-y-2">
+        <div class="mb-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.6875rem] tracking-[0.14em] uppercase">
           <a
             target="_blank"
             href={rssPath}
@@ -58,7 +58,7 @@ const rssPath = `${import.meta.env.BASE_URL.replace(/\/?$/, "/")}noticias/rss.xm
                 locale,
                 `noticias/categoria/${category.id}`
               )}
-              class="border-foreground hover:border-hover hover:text-hover border-b-2 border-dashed"
+              class="border-border text-muted-foreground hover:border-hover hover:text-hover border-b border-dashed pb-px"
             >
               {category.label}
             </a>

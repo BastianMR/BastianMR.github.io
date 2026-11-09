@@ -18,21 +18,34 @@ const currentYear = new Date().getFullYear();
   {...attrs}
 >
   <div
-    class="border-border flex flex-col items-center justify-between border-t py-6 sm:flex-row-reverse sm:py-4"
+    class="border-border flex flex-col gap-4 border-t py-6 sm:flex-row sm:items-center"
   >
-    <div class="flex items-center gap-1">
-      <Socials />
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
       <img
         src="/images/eastereggs/sick.png"
         alt="Caballero de Guardian Tales noqueado después de chocarse con los iconos"
-        class="pixel-sprite h-9 w-auto rotate-12 hover:animate-bounce"
+        class="pixel-sprite h-5 w-auto"
         width="37"
         height="39"
         loading="lazy"
         title="🤕"
       />
+      <p class="text-muted-foreground text-xs leading-relaxed">
+        <strong
+          class="text-accent text-[0.6875rem] font-semibold tracking-[0.1em] uppercase"
+        >
+          {t.footer.incidentsLabel}
+        </strong>
+        <span class="mx-1" aria-hidden="true">·</span>
+        {t.footer.incidentsNote}
+      </p>
+      <div class="flex items-center gap-1">
+        <Socials />
+      </div>
     </div>
-    <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
+    <div
+      class="text-muted-foreground flex flex-col items-start text-xs whitespace-nowrap sm:ms-auto sm:flex-row sm:items-center"
+    >
       <span>{t.footer.copyright} &#169; {currentYear}</span>
       <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
       <span>{t.footer.allRightsReserved}</span>
