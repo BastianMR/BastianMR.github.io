@@ -23,4 +23,8 @@
   --muted: #1a1a1a;
   --muted-foreground: #9ca3af;
   --border: #262626;
+
+  /* HUD shell metrics: status bar height and fixed rail width. */
+  --bar-h: 3.5rem;
+  --rail-w: 12rem;
 }

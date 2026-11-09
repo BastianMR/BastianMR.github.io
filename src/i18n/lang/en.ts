@@ -10,6 +10,12 @@ export default {
     archives: "Archives",
     search: "Search",
   },
+  hud: {
+    index: "Index",
+    online: "Online",
+    posts: "posts",
+    kicker: "personal blog",
+  },
   post: {
     publishedAt: "Published at",
     updatedAt: "Updated",
@@ -43,6 +49,8 @@ export default {
   footer: {
     copyright: "Copyright",
     allRightsReserved: "All rights reserved.",
+    incidentsLabel: "no incidents",
+    incidentsNote: "except the knight, who crashed into the icons",
   },
   pages: {
     tagTitle: "Tag",

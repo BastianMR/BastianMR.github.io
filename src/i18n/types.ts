@@ -8,6 +8,12 @@ export interface UIStrings {
     archives: string;
     search: string;
   };
+  hud: {
+    index: string;
+    online: string;
+    posts: string;
+    kicker: string;
+  };
   post: {
     publishedAt: string;
     updatedAt: string;
@@ -41,6 +47,8 @@ export interface UIStrings {
   footer: {
     copyright: string;
     allRightsReserved: string;
+    incidentsLabel: string;
+    incidentsNote: string;
   };
   pages: {
     tagTitle: string;

@@ -23,12 +23,40 @@
   }
 }
 
+@theme {
+  --animate-caret: caret 1.1s steps(2, end) infinite;
+}
+
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
 @utility max-w-app {
-  @apply max-w-3xl;
+  @apply max-w-4xl;
 }
 
 @utility app-layout {
-  @apply max-w-app mx-auto w-full px-4;
+  @apply max-w-app mx-auto w-full px-5 sm:px-10;
+}
+
+/*
+  HUD rail breakpoint.
+  From 901px up the rail is fixed on the inline-start edge, so the body clears
+  it once here instead of every page adding its own margin. Below that the rail
+  is a static strip under the status bar and no offset is applied.
+*/
+@media (min-width: 901px) {
+  body[data-hud-rail] {
+    padding-inline-start: var(--rail-w);
+  }
+
+  /* The status bar spans the full viewport, bleeding back over the offset. */
+  body[data-hud-rail] > .hud-bar {
+    margin-inline-start: calc(-1 * var(--rail-w));
+    width: calc(100% + var(--rail-w));
+  }
 }
 
 @utility active-nav {

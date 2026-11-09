@@ -10,6 +10,12 @@ export default {
     archives: "Archivo",
     search: "Buscar",
   },
+  hud: {
+    index: "Índice",
+    online: "En línea",
+    posts: "posts",
+    kicker: "blog personal",
+  },
   post: {
     publishedAt: "Publicado el",
     updatedAt: "Actualizado",
@@ -43,6 +49,8 @@ export default {
   footer: {
     copyright: "Copyright",
     allRightsReserved: "Todos los derechos reservados.",
+    incidentsLabel: "sin incidencias",
+    incidentsNote: "salvo el caballero, que se chocó con los iconos",
   },
   pages: {
     tagTitle: "Tag",
