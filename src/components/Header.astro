@@ -113,11 +113,11 @@ const padNumber = (value: number) => String(value).padStart(2, "0");
 
 <nav
   aria-label={t.hud.index}
-  class="hud-rail bg-background border-border flex flex-wrap items-center gap-x-5 border-b px-4 py-2 min-[901px]:fixed min-[901px]:start-0 min-[901px]:top-(--bar-h) min-[901px]:bottom-0 min-[901px]:w-(--rail-w) min-[901px]:flex-col min-[901px]:items-stretch min-[901px]:gap-0 min-[901px]:overflow-y-auto min-[901px]:border-e min-[901px]:border-b-0 min-[901px]:px-4 min-[901px]:pt-7 min-[901px]:pb-5"
+  class="hud-rail bg-background border-border flex flex-wrap items-center gap-x-5 border-b px-4 py-2 min-[901px]:fixed min-[901px]:start-0 min-[901px]:top-(--bar-h) min-[901px]:bottom-0 min-[901px]:w-(--rail-w) min-[901px]:flex-col min-[901px]:items-stretch min-[901px]:gap-0 min-[901px]:overflow-y-auto min-[901px]:border-e min-[901px]:border-b-0 min-[901px]:px-6 min-[901px]:pt-7 min-[901px]:pb-5"
 >
   <p
     aria-hidden="true"
-    class="text-muted-foreground mb-2 hidden ps-2.5 pe-2 text-[0.625rem] tracking-[0.22em] uppercase min-[901px]:block"
+    class="text-muted-foreground mb-3 hidden ps-0 pe-2 text-[0.625rem] tracking-[0.22em] uppercase min-[901px]:block"
   >
     {t.hud.index}
   </p>
@@ -133,7 +133,7 @@ const padNumber = (value: number) => String(value).padStart(2, "0");
               href={getRelativeLocaleUrl(locale, item.path)}
               aria-current={active ? "page" : undefined}
               class:list={[
-                "flex items-center gap-2 border-s-2 px-2 py-2 text-sm leading-snug transition-colors",
+                "flex items-baseline gap-2 border-s-2 py-2 ps-1.5 pe-2 text-sm leading-snug transition-colors",
                 active
                   ? "border-accent bg-muted text-accent"
                   : "hover:bg-muted hover:text-accent border-transparent",
@@ -141,7 +141,7 @@ const padNumber = (value: number) => String(value).padStart(2, "0");
             >
               <span
                 class:list={[
-                  "text-[0.6875rem] tracking-[0.08em] tabular-nums",
+                  "w-4 shrink-0 text-[0.6875rem] tracking-[0.08em] tabular-nums",
                   active ? "text-accent" : "text-muted-foreground",
                 ]}
               >
@@ -152,7 +152,7 @@ const padNumber = (value: number) => String(value).padStart(2, "0");
                   src="/images/eastereggs/attack.png"
                   alt=""
                   aria-hidden="true"
-                  class="pixel-sprite ms-auto hidden h-[18px] w-auto min-[901px]:block"
+                  class="pixel-sprite ms-auto hidden h-[18px] w-auto self-center min-[901px]:block"
                   width="49"
                   height="41"
                 />
