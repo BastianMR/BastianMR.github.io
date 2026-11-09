@@ -26,6 +26,10 @@ const config: ResolvedAstroPaperConfig = {
     scheduledPostMargin:
       userConfig.posts?.scheduledPostMargin ?? 15 * 60 * 1000,
   },
+  news: {
+    perPage: userConfig.news?.perPage ?? 5,
+    perIndex: userConfig.news?.perIndex ?? 3,
+  },
   features: {
     lightAndDarkMode: userConfig.features?.lightAndDarkMode ?? true,
     dynamicOgImage: userConfig.features?.dynamicOgImage ?? true,

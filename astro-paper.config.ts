@@ -18,6 +18,10 @@ export default defineAstroPaperConfig({
     perIndex: 4,
     scheduledPostMargin: 15 * 60 * 1000,
   },
+  news: {
+    perPage: 5,
+    perIndex: 3,
+  },
   features: {
     lightAndDarkMode: false,
     dynamicOgImage: true,

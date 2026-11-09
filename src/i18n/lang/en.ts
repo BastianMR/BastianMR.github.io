@@ -4,6 +4,7 @@ export default {
   nav: {
     home: "Home",
     posts: "Posts",
+    news: "News",
     tags: "Tags",
     about: "About",
     archives: "Archives",
@@ -32,6 +33,12 @@ export default {
     featured: "Featured",
     recentPosts: "Recent Posts",
     allPosts: "All Posts",
+    recentNews: "Latest News",
+    allNews: "All News",
+  },
+  news: {
+    sourceLabel: "Source",
+    categoryLabel: "Category",
   },
   footer: {
     copyright: "Copyright",
@@ -46,6 +53,11 @@ export default {
 
     postsTitle: "Posts",
     postsDesc: "All the articles I've posted.",
+
+    newsTitle: "News",
+    newsDesc: "Technology and AI news, each one with its source.",
+    newsCategoryTitle: "Category",
+    newsCategoryDesc: "All the news in the category",
 
     archivesTitle: "Archives",
     archivesDesc: "All the articles I've archived.",

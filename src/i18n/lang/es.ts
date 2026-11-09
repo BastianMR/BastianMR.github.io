@@ -4,6 +4,7 @@ export default {
   nav: {
     home: "Inicio",
     posts: "Posts",
+    news: "Noticias",
     tags: "Tags",
     about: "Sobre mí",
     archives: "Archivo",
@@ -32,6 +33,12 @@ export default {
     featured: "Destacado",
     recentPosts: "Posts recientes",
     allPosts: "Todos los posts",
+    recentNews: "Últimas noticias",
+    allNews: "Todas las noticias",
+  },
+  news: {
+    sourceLabel: "Fuente",
+    categoryLabel: "Categoría",
   },
   footer: {
     copyright: "Copyright",
@@ -46,6 +53,12 @@ export default {
 
     postsTitle: "Posts",
     postsDesc: "Todos los artículos que he publicado.",
+
+    newsTitle: "Noticias",
+    newsDesc:
+      "Noticias de tecnología e inteligencia artificial, cada una con su fuente.",
+    newsCategoryTitle: "Categoría",
+    newsCategoryDesc: "Todas las noticias de la categoría",
 
     archivesTitle: "Archivo",
     archivesDesc: "Todos los artículos archivados.",

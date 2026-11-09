@@ -33,6 +33,13 @@ interface PostsConfig {
   scheduledPostMargin?: number;
 }
 
+interface NewsConfig {
+  /** News entries per page on paginated listing pages */
+  perPage?: number;
+  /** News entries shown on the index/home page */
+  perIndex?: number;
+}
+
 interface FeaturesConfig {
   /** Enable light/dark mode toggle. Defaults to true. */
   lightAndDarkMode?: boolean;
@@ -95,6 +102,7 @@ interface ShareLink {
 interface AstroPaperConfig {
   site: SiteConfig;
   posts?: PostsConfig;
+  news?: NewsConfig;
   features?: FeaturesConfig;
   /** Social profile links shown in header/footer */
   socials?: SocialLink[];
@@ -120,6 +128,7 @@ type ResolvedSiteConfig = Required<
 export interface ResolvedAstroPaperConfig {
   site: ResolvedSiteConfig;
   posts: Required<PostsConfig>;
+  news: Required<NewsConfig>;
   features: Required<FeaturesConfig>;
   socials: SocialLink[];
   shareLinks: ShareLink[];
