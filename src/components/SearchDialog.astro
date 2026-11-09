@@ -1,0 +1,302 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import "@pagefind/default-ui/css/ui.css";
+import IconSearch from "@/assets/icons/IconSearch.svg";
+import IconX from "@/assets/icons/IconX.svg";
+import { getAssetPath } from "@/utils/withBase";
+import { useTranslations } from "@/i18n";
+import config from "@/config";
+
+/*
+  Search lives in the HUD bar as a native <dialog> instead of a numbered rail
+  entry. The trigger is a real link to /search/, so search keeps working without
+  JS; the script below only upgrades the click to `showModal()`.
+*/
+const locale = Astro.currentLocale ?? config.site.lang;
+const t = useTranslations(locale);
+
+const searchUrl = getRelativeLocaleUrl(locale, "search");
+const pagefindBundlePath = getAssetPath("pagefind/");
+---
+
+<a
+  id="search-trigger"
+  href={searchUrl}
+  aria-label={t.nav.search}
+  aria-haspopup="dialog"
+  aria-keyshortcuts="Control+K Meta+K"
+  class="text-foreground hover:text-accent inline-flex size-11 shrink-0 items-center justify-center transition-colors focus-visible:outline-offset-2"
+>
+  <IconSearch class="size-5" aria-hidden="true" />
+</a>
+
+<dialog
+  id="search-dialog"
+  aria-label={t.a11y.searchDialogLabel}
+  data-pagefind-ignore
+>
+  <div
+    class="border-border flex shrink-0 items-center gap-3 border-b px-4 py-3"
+  >
+    <p
+      class="text-muted-foreground text-[0.625rem] tracking-[0.22em] uppercase"
+    >
+      {t.nav.search}
+    </p>
+    <p
+      aria-hidden="true"
+      class="text-muted-foreground ms-auto flex items-center gap-1 text-[0.6875rem] tracking-[0.08em]"
+    >
+      <kbd class="bg-muted border-border font-app rounded border px-1.5 py-0.5"
+        >Ctrl</kbd
+      >
+      <span>+</span>
+      <kbd class="bg-muted border-border font-app rounded border px-1.5 py-0.5"
+        >K</kbd
+      >
+    </p>
+    <button
+      type="button"
+      data-search-close
+      aria-label={t.a11y.closeSearch}
+      class="text-foreground hover:text-accent -me-2 inline-flex size-11 shrink-0 items-center justify-center rounded transition-colors focus-visible:outline-offset-2"
+    >
+      <IconX class="size-4" aria-hidden="true" />
+    </button>
+  </div>
+
+  <div
+    id="search-dialog-mount"
+    class="min-h-40 min-w-0 flex-1 overflow-y-auto px-4 py-4"
+    data-bundle-path={pagefindBundlePath}
+    data-placeholder={t.a11y.searchPlaceholder}
+    data-no-results={t.a11y.noResults}
+  >
+  </div>
+
+  <p
+    id="search-dialog-notice"
+    hidden
+    class="text-muted-foreground px-4 py-6 text-sm"
+  >
+    {t.a11y.noResults}
+  </p>
+
+  <div class="border-border shrink-0 border-t px-4 py-3">
+    <a
+      href={searchUrl}
+      class="text-accent text-sm underline decoration-dashed underline-offset-4 focus-visible:outline-offset-2"
+    >
+      {t.a11y.openSearchPage}
+    </a>
+  </div>
+</dialog>
+
+<script>
+  const TRIGGER_ID = "search-trigger";
+  const DIALOG_ID = "search-dialog";
+  const MOUNT_ID = "search-dialog-mount";
+  const NOTICE_ID = "search-dialog-notice";
+  const SHORTCUT_FLAG = "__searchDialogShortcutBound";
+
+  // `showModal()` throws on an already-open dialog, and the page-level shortcut
+  // must be registered once even if this module runs again after a page swap.
+  const flags = window as unknown as Record<string, unknown>;
+
+  function getParts() {
+    const trigger = document.getElementById(TRIGGER_ID);
+    const dialog = document.getElementById(DIALOG_ID);
+    if (!(trigger instanceof HTMLAnchorElement)) return null;
+    if (!(dialog instanceof HTMLDialogElement)) return null;
+    return { trigger, dialog };
+  }
+
+  function getMount() {
+    const mount = document.getElementById(MOUNT_ID);
+    return mount instanceof HTMLElement ? mount : null;
+  }
+
+  function showFallback(mount: HTMLElement) {
+    const notice = document.getElementById(NOTICE_ID);
+    mount.hidden = true;
+    if (notice instanceof HTMLElement) notice.hidden = false;
+  }
+
+  async function ensureSearchUi(): Promise<HTMLElement | null> {
+    const mount = getMount();
+    if (!mount) return null;
+    if (mount.dataset.searchState === "failed") return null;
+
+    if (mount.dataset.searchState !== "ready") {
+      mount.dataset.searchState = "loading";
+
+      const bundlePath = mount.dataset.bundlePath ?? "";
+
+      // The bundle only exists after `pagefind --site dist`. Probing it keeps a
+      // missing index to the "no results" copy instead of a console error loop.
+      const bundlePresent = await fetch(`${bundlePath}pagefind.js`).then(
+        response => response.ok,
+        () => false
+      );
+
+      if (!bundlePresent) {
+        mount.dataset.searchState = "failed";
+        showFallback(mount);
+        return null;
+      }
+
+      try {
+        // @ts-expect-error — Missing types for @pagefind/default-ui package.
+        const { PagefindUI } = await import("@pagefind/default-ui");
+
+        // Same options as /search/, except the URL is left alone: the dialog can
+        // open on any page, so rewriting `?q=` there would be surprising.
+        new PagefindUI({
+          element: `#${MOUNT_ID}`,
+          bundlePath,
+          showImages: false,
+          showSubResults: true,
+          translations: {
+            placeholder: mount.dataset.placeholder ?? "",
+            zero_results: mount.dataset.noResults ?? "",
+          },
+          processTerm: (term: string) => term,
+        });
+
+        mount.dataset.searchState = "ready";
+      } catch {
+        mount.dataset.searchState = "failed";
+        showFallback(mount);
+        return null;
+      }
+    }
+
+    return mount;
+  }
+
+  function openSearchDialog() {
+    const parts = getParts();
+    if (!parts || parts.dialog.open) return;
+
+    parts.dialog.showModal();
+
+    // First open waits for the lazy pagefind import, so focus the field once the
+    // UI exists instead of leaving focus on the close button.
+    void ensureSearchUi().then(mount => {
+      if (!mount || !parts.dialog.open) return;
+      const input = mount.querySelector(".pagefind-ui__search-input");
+      if (input instanceof HTMLInputElement) input.focus();
+    });
+  }
+
+  function bindSearchDialog() {
+    const parts = getParts();
+    if (!parts) return;
+
+    const { trigger, dialog } = parts;
+
+    if (trigger.dataset.searchBound !== "true") {
+      trigger.dataset.searchBound = "true";
+      trigger.addEventListener("click", event => {
+        if (
+          event.defaultPrevented ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey ||
+          event.button !== 0
+        )
+          return;
+
+        // The anchor still points at /search/ for the no-JS and middle-click cases.
+        event.preventDefault();
+        openSearchDialog();
+      });
+    }
+
+    if (dialog.dataset.searchBound !== "true") {
+      dialog.dataset.searchBound = "true";
+
+      const closeButton = dialog.querySelector("[data-search-close]");
+      closeButton?.addEventListener("click", () => dialog.close());
+
+      // `event.target === dialog` is the backdrop: clicks inside bubble from children.
+      dialog.addEventListener("click", event => {
+        if (event.target === dialog) dialog.close();
+      });
+
+      // Covers Esc, the close button and the backdrop in one place.
+      dialog.addEventListener("close", () => trigger.focus());
+    }
+
+    if (flags[SHORTCUT_FLAG] !== true) {
+      flags[SHORTCUT_FLAG] = true;
+      document.addEventListener("keydown", event => {
+        if (!(event.ctrlKey || event.metaKey)) return;
+        if (event.altKey || event.shiftKey) return;
+        if (event.key.toLowerCase() !== "k") return;
+        if (!getParts()) return;
+
+        // A bare `k` is left alone: typing into the page keeps working.
+        event.preventDefault();
+        openSearchDialog();
+      });
+    }
+  }
+
+  bindSearchDialog();
+  document.addEventListener("astro:after-swap", bindSearchDialog);
+</script>
+
+<style>
+  #search-dialog {
+    width: min(46rem, calc(100vw - 2rem));
+    max-width: none;
+    max-height: min(85vh, 44rem);
+    padding: 0;
+    border: 1px solid var(--border);
+    background-color: var(--background);
+    color: var(--foreground);
+    overflow: hidden;
+  }
+
+  /* `showModal()` keeps the closed state from the UA sheet; only open lays out. */
+  #search-dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #search-dialog::backdrop {
+    background-color: rgb(0 0 0 / 0.72);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    #search-dialog[open] {
+      animation: search-dialog-in 140ms ease-out;
+    }
+
+    #search-dialog[open]::backdrop {
+      animation: search-dialog-backdrop-in 140ms ease-out;
+    }
+  }
+
+  @keyframes search-dialog-in {
+    from {
+      opacity: 0;
+      transform: translateY(-0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes search-dialog-backdrop-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>

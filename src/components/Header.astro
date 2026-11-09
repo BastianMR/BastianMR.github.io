@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMoon from "@/assets/icons/IconMoon.svg";
+import SearchDialog from "@/components/SearchDialog.astro";
 import { stripBase, stripLocale } from "@/utils/withBase";
 import { entryFilter } from "@/utils/entryFilter";
 import { useTranslations } from "@/i18n";
@@ -29,17 +30,14 @@ const isActive = (path: string) => {
   return currentPath === path || currentPathArray[0] === pathArray[0];
 };
 
-// Rail entries, in reading order. Search keeps /search/ reachable from every
-// page; archives only exist when the feature is enabled.
+// Rail entries, in reading order. Search is not numbered here: it is the dialog
+// trigger in the HUD bar. Archives only exist when the feature is enabled.
 const railItems = [
   { path: "posts", label: t.nav.posts },
   { path: "noticias", label: t.nav.news },
   { path: "proyectos", label: t.nav.projects },
   { path: "tags", label: t.nav.tags },
   { path: "about", label: t.nav.about },
-  ...(features.search !== false
-    ? [{ path: "search", label: t.nav.search }]
-    : []),
   ...(features.showArchives
     ? [{ path: "archives", label: t.nav.archives }]
     : []),
@@ -92,6 +90,7 @@ const padNumber = (value: number) => String(value).padStart(2, "0");
           </button>
         )
       }
+      {features.search !== false && <SearchDialog />}
       <div
         class="flex items-center gap-3 text-xs tracking-[0.14em] whitespace-nowrap uppercase"
       >

@@ -95,6 +95,9 @@ export interface UIStrings {
     toggleTheme: string;
     searchPlaceholder: string;
     noResults: string;
+    searchDialogLabel: string;
+    closeSearch: string;
+    openSearchPage: string;
     goToPreviousPage: string;
     goToNextPage: string;
   };
