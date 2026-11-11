@@ -2,6 +2,7 @@
 title: "La semana en que la IA se abarató y el capital se asustó"
 description: "Claude Fable 5.2 bajó 20%, Meituan liberó 1,6 billones de parámetros bajo licencia MIT y Google sumó dos TPU nuevos. La misma semana, SoftBank perdió US$7.000 M por reservar energía y los inversores del IPO de Anthropic recortaron su valuación en US$300.000 M."
 pubDatetime: 2026-11-10T17:30:00-03:00
+modDatetime: 2026-11-11T10:30:00-03:00
 category: "ia"
 tags:
   [
@@ -166,11 +167,16 @@ de chat de menos del 1% de sus workspaces [20](#ref-20).
   en el chat general. 50,3% en Terminal-Bench 4.0 a esfuerzo máximo, contra 21,5% de GPT-5.6 Terra
   [25](#ref-25) (fuente secundaria: el changelog de OpenAI no se abrió).
 - **Gemini 4 Carbon** (Google, 28 de octubre): el modelo más fuerte de Google, enfocado en
-  ciberseguridad y tareas de horizonte largo, con 88,2% en SEC-bench Pro. Acceso **restringido a un
-  subconjunto de defensores en ciberseguridad** y luego a socios del programa Fairwind; sin fecha
-  para el público ni para la API [26](#ref-26) (fuente secundaria).
+  ciberseguridad y tareas de horizonte largo, con 88,2% en SEC-bench Pro. Al lanzarse, el acceso
+  estaba **restringido a un subconjunto de defensores en ciberseguridad** y luego a socios del
+  programa Fairwind [26](#ref-26) (fuente secundaria).
 - **Precio de Carbon**: US$2/US$10 por millón entrada/salida como tarifa introductoria, US$4/US$20
-  después, sin fecha de corte publicada [26](#ref-26) (fuente secundaria).
+  después [26](#ref-26) (fuente secundaria).
+- **Corrección del 11 de noviembre**: esta entrada decía que Carbon no tenía fecha para el público
+  ni para la API. Al día siguiente, Google lo puso en la API paga, en AI Ultra, en AI Studio y en
+  Antigravity, con la suba a US$4/US$20 después del **30 de noviembre**
+  [29](#ref-29)[30](#ref-30). El detalle completo está en [CoreWeave salva el día, el CPI manda la
+  factura](/noticias/coreweave-cpi-capital-mas-caro/).
 
 ## Contexto
 
@@ -343,3 +349,11 @@ política a esa pregunta antes de que se la hagan en el roadshow.
 28. <a id="ref-28"></a>NVIDIA Robotics — anuncio de GR00T 2 en CoRL 2026.
     [x.com](https://x.com/NVIDIARobotics/status/2119794454190006428) (accedido 2026-11-10). Usado
     para: confirmación oficial del anuncio y de Isaac Lab-Arena.
+29. <a id="ref-29"></a>AI Weekly — "Google Ships Gemini 4 Carbon to Paid API and AI Ultra, Tops
+    CursorBench and WANDR at $2/M In" (alerta). 10 nov 2026.
+    [aiweekly.co](https://aiweekly.co/alerts/google-ships-gemini-4-carbon-to-paid-api-and-ai-ultra-tops-cursorbench-and)
+    (accedido 2026-11-11). Usado para: la corrección del 11 de noviembre sobre la disponibilidad de
+    Gemini 4 Carbon.
+30. <a id="ref-30"></a>AI Weekly — "AI news for Wednesday, November 11, 2026" (edición diaria).
+    [aiweekly.co](https://aiweekly.co/ai-news-today/edition/2026-11-11) (accedido 2026-11-11). Usado
+    para: fecha de corte de precio del 30 de noviembre y disponibilidad en AI Studio y Antigravity.
