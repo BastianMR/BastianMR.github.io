@@ -253,7 +253,7 @@ comporta, no para el peso que fue tocado.
 ## Qué sigue
 
 - El **17 de noviembre**, doble examen: el Q3 del año fiscal 2027 de Nvidia (guía de ~US$108.000 M)
-  y el cierre de la ventana minorista del IPO de Anthropic en Australia, con precio final esperado
+  y el cierre de la ventana minorista de la IPO de Anthropic en Australia, con precio final esperado
   de US$70–78 por acción.
 - El **FOMC del 8–9 de diciembre**: 25 o 50 puntos base. El mercado hoy descuenta 100% de 25 y
   13,6% de 50.

@@ -1,6 +1,6 @@
 ---
 title: "La semana en que la IA se abarató y el capital se asustó"
-description: "Claude Fable 5.2 bajó 20%, Meituan liberó 1,6 billones de parámetros bajo licencia MIT y Google sumó dos TPU nuevos. La misma semana, SoftBank perdió US$7.000 M por reservar energía y los inversores del IPO de Anthropic recortaron su valuación en US$300.000 M."
+description: "Claude Fable 5.2 bajó 20%, Meituan liberó 1,6 billones de parámetros bajo licencia MIT y Google sumó dos TPU nuevos. La misma semana, SoftBank perdió US$7.100 M por reservar energía y los inversores de la IPO de Anthropic recortaron su valuación en US$300.000 M."
 pubDatetime: 2026-11-10T17:30:00-03:00
 modDatetime: 2026-11-11T10:30:00-03:00
 category: "ia"
@@ -28,8 +28,8 @@ sistemas TPU nuevos en un mismo año [6](#ref-6) y Meituan abrió bajo licencia 
 billones de parámetros [9](#ref-9)[10](#ref-10).
 
 Por el lado del capital, el mercado se enfrió: SoftBank reportó una pérdida trimestral de ¥1,12
-billones (~US$7.000 M) por adelantos no reembolsables en equipos de energía para su campus de data
-centers en Ohio [12](#ref-12)[13](#ref-13), y los inversores que evalúan el IPO de Anthropic
+billones (~US$7.100 M) por adelantos no reembolsables en equipos de energía para su campus de data
+centers en Ohio [12](#ref-12)[13](#ref-13), y los inversores que evalúan la IPO de Anthropic
 bajaron su valuación de US$1,4–1,5 billones a un rango de US$1,1–1,3 billones [22](#ref-22)[23](#ref-23).
 
 En el mismo tramo, dos incidentes de seguridad empujaron la política pública: un agente de OpenAI
@@ -40,10 +40,10 @@ de chat de menos del 1% de sus workspaces [20](#ref-20).
 
 ## Hechos clave
 
-### Anthropic: Fable 5.2 y Mythos 5.2, y un IPO que se enfría
+### Anthropic: Fable 5.2 y Mythos 5.2, y una IPO que se enfría
 
 - **9 de noviembre**: Anthropic publicó Claude Fable 5.2 y Claude Mythos 5.2. Son el mismo modelo
-  subyacente; Fable lleva los salvaguardas de ciberseguridad y biología que permiten ofrecerlo a
+  subyacente; Fable lleva las salvaguardas de ciberseguridad y biología que permiten ofrecerlo a
   todos, y Mythos se entrega solo a organizaciones verificadas en los programas Cyber y Life
   Sciences [2](#ref-2).
 - **Precio**: US$8 por millón de tokens de entrada y US$40 de salida, contra US$10 y US$50 de la
@@ -182,7 +182,7 @@ de chat de menos del 1% de sus workspaces [20](#ref-20).
 
 **El precio del token y el precio del capital se movieron en direcciones opuestas.** En la misma
 semana, Anthropic bajó 20% el precio de su modelo más caro y Meituan regaló un 1,6T bajo MIT,
-mientras SoftBank anotaba US$7.000 M de pérdida por reservar energía y los inversores del IPO de
+mientras SoftBank anotaba US$7.100 M de pérdida por reservar energía y los inversores de la IPO de
 Anthropic recortaban su valuación en US$300.000 M. No es contradicción: es la misma curva vista
 desde dos lados. El costo de la inteligencia cae porque la competencia es brutal y los pesos
 abiertos presionan; el costo de _servirla_ sube porque depende de megavatios, permisos y obra
@@ -225,7 +225,7 @@ política a esa pregunta antes de que se la hagan en el roadshow.
 
 ## Qué sigue
 
-- El pricing y el debut del IPO de Anthropic en Nasdaq, previstos para la semana del 16 de
+- El pricing y el debut de la IPO de Anthropic en Nasdaq, previstos para la semana del 16 de
   noviembre: ahí se sabrá si el mercado acepta el rango de US$1,1–1,3 billones.
 - Si Apple extiende los usage packs a Final Cut Pro, Pixelmator Pro e iWork, y cuánto uso extra
   agrega realmente cada pack de US$49,99.

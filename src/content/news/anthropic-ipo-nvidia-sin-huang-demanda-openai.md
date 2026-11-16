@@ -28,7 +28,7 @@ El lunes abrió la semana más concentrada que el mercado de la IA haya tenido: 
 roadshow final con **825 millones de acciones clase A** a un rango de **US$70 a US$78**, precio el
 miércoles 18 y debut en el Nasdaq el jueves 19 bajo el ticker **ANT** [1](#ref-1)[2](#ref-2), mientras
 **Nvidia** reporta el martes sus primeros resultados sin **Jensen Huang** al mando y con una petición
-de **180.200 firmas** pidiendo su regreso [4](#ref-4).
+de **180.200 firmas** pidiendo su regreso [4](#ref-4)[5](#ref-5).
 
 El mercado no esperó: el **Nasdaq cayó 2,65%** y el **S&P 500 un 2,02%** en el intradía, con el VIX en
 **21,42 (+10,98%)** [10](#ref-10)[11](#ref-11). En paralelo, el Departamento de Comercio cerró la
@@ -143,7 +143,7 @@ que lo hace [8](#ref-8).
 - **El período**: accionistas entre el **23 de julio y el 29 de octubre de 2026**; los demandados
   incluyen al CEO **Lip-Bu Tan** y al CFO **David Zinsner** [12](#ref-12).
 - **La caída**: casi **29% en una sola jornada** tras el outlook decepcionante [12](#ref-12).
-- **El paradoja**: Intel sube **62% en el año** hasta el viernes, pero muy por debajo de su máximo de
+- **La paradoja**: Intel sube **62% en el año** hasta el viernes, pero muy por debajo de su máximo de
   **US$142,35** del 30 de junio [12](#ref-12).
 - **El mercado**: INTC estuvo entre las mayores caídas del lunes, con **-6,9%** [11](#ref-11).
 

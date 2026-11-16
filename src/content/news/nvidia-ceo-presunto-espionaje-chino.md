@@ -118,7 +118,7 @@ sobre ese mismo mercado.
 
 - **Del "culto a Huang" al culto a la persona clave.** "Le da un golpe al culto a Huang que se
   instaló en el mundo de los chips", dijo Chris Beauchamp (IG Group), que también advirtió: "si
-  esto se convierte en una investigación congressional más amplia, las acciones van a sufrir"
+  esto se convierte en una investigación del Congreso más amplia, las acciones van a sufrir"
   [3](#ref-3). Huang cofundó Nvidia hace más de tres décadas y sigue siendo su CEO
   [3](#ref-3); tras la revelación, Reuters describe su continuidad como bajo escrutinio, aunque
   el consenso de analistas descarta un reemplazo [6](#ref-6).
