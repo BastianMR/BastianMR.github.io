@@ -43,9 +43,9 @@ La nota que falta es la de crédito. Moody's, S&P y Fitch todavía no calificaro
 
 ## El resto del día
 
-- Las casas que iniciaron cobertura el jueves quedaron arriba del cierre: Wolfe en US$135, Melius en US$155, Needham en US$150, Citizens en US$125 y William Blair en Outperform sin objetivo, con un múltiplo de 17 a 20 veces ventas [7](#ref-7).
+- Las cinco casas que iniciaron cobertura quedaron arriba del cierre: Wolfe en US$135, Melius en US$155, Needham en US$150, Citizens en US$125 y William Blair en Outperform sin objetivo [7](#ref-7).
 - El consenso de cinco analistas quedó en US$118,93 por acción, 20,9% sobre el cierre del jueves, con tres recomendaciones de compra fuerte, una de compra y una de mantener [8](#ref-8).
-- SpaceX presentó un S-1 confidencial en abril y OpenAI no ha presentado el suyo, con la ventana de salida puesta en 2027: la comparación que el mercado va a exigirle a ANT ya tiene fecha [9](#ref-9).
+- SpaceX presentó un S-1 confidencial en abril y OpenAI no ha presentado el suyo, con la ventana de salida puesta en 2027 [9](#ref-9).
 
 ## Qué sigue
 
